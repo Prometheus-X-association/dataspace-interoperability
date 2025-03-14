@@ -37,16 +37,17 @@ The transformation process will involve mapping the DCAT model used by SIMPL to 
 
 | Requirement ID | Short Description | BB Input Format | BB Output Format | Requirement Type |
 | --- | --- | --- | --- | --- |
-| BB-REQ_ID__1 | Must be able to process DSP-based DCAT Offers | DCAT Datasets | REST API response | Functional (FUN) |
-| BB-REQ_ID__2 | Must allow the transformation of DSP-based DCAT Offers into processable PTX Catalogue Offers | REST API call | REST API response | Functional (FUN) |
+| BB-REQ_ID\_\_1 | Must be able to process DSP-based DCAT Offers | DCAT Datasets | REST API response | Functional (FUN) |
+| BB-REQ_ID\_\_2 | Must allow the transformation of DSP-based DCAT Offers into processable PTX Catalogue Offers | REST API call | REST API response | Functional (FUN) |
 
 ## Integrations
 
 ### Direct Integrations with other BBs
 
 The work done in this building block will ensure communication with
-* Prometheus-X Catalog-API BB
-* Prometheus-X Contract-Manager BB for ODRL policies
+
+- Prometheus-X Catalog-API BB
+- Prometheus-X Contract-Manager BB for ODRL policies
 
 ### Itegrations via the Prometheus-X Dataspace Connector
 
@@ -67,9 +68,9 @@ The next steps will involve:
 
 ## Relevant Standards and Protocols
 
-* IDS Dataspace Protocol
-* DCAT
-* JSON-LD
+- IDS Dataspace Protocol
+- DCAT
+- JSON-LD
 
 ## Input/Output Data
 
@@ -79,42 +80,42 @@ For example, a `cat:CatalogResponseMessage` might contain a catalogue offer like
 
 ```json
 {
-  "@type": "cat:CatalogResponseMessage",
-  "@id": "https://example.com/catalog-response",
-  "payload": [
-    {
-      "@type": "dcat:Dataset",
-      "@id": "https://example.com/dataset-1",
-      "dct:title": "Example Dataset 1",
-      "dct:description": "This is an example dataset.",
-      "dcat:keyword": ["example", "dataset"],
-      "dcat:distribution": [
-        {
-          "@type": "dcat:Distribution",
-          "@id": "https://example.com/distribution-1",
-          "dct:title": "Example Distribution 1",
-          "dct:description": "This is an example distribution.",
-          "dcat:accessURL": "https://example.com/access-url-1"
-        }
-      ]
-    },
-    {
-      "@type": "dcat:Dataset",
-      "@id": "https://example.com/dataset-2",
-      "dct:title": "Example Dataset 2",
-      "dct:description": "This is another example dataset.",
-      "dcat:keyword": ["example", "dataset"],
-      "dcat:distribution": [
-        {
-          "@type": "dcat:Distribution",
-          "@id": "https://example.com/distribution-2",
-          "dct:title": "Example Distribution 2",
-          "dct:description": "This is another example distribution.",
-          "dcat:accessURL": "https://example.com/access-url-2"
-        }
-      ]
-    }
-  ]
+	"@type": "cat:CatalogResponseMessage",
+	"@id": "https://example.com/catalog-response",
+	"payload": [
+		{
+			"@type": "dcat:Dataset",
+			"@id": "https://example.com/dataset-1",
+			"dct:title": "Example Dataset 1",
+			"dct:description": "This is an example dataset.",
+			"dcat:keyword": ["example", "dataset"],
+			"dcat:distribution": [
+				{
+					"@type": "dcat:Distribution",
+					"@id": "https://example.com/distribution-1",
+					"dct:title": "Example Distribution 1",
+					"dct:description": "This is an example distribution.",
+					"dcat:accessURL": "https://example.com/access-url-1"
+				}
+			]
+		},
+		{
+			"@type": "dcat:Dataset",
+			"@id": "https://example.com/dataset-2",
+			"dct:title": "Example Dataset 2",
+			"dct:description": "This is another example dataset.",
+			"dcat:keyword": ["example", "dataset"],
+			"dcat:distribution": [
+				{
+					"@type": "dcat:Distribution",
+					"@id": "https://example.com/distribution-2",
+					"dct:title": "Example Distribution 2",
+					"dct:description": "This is another example distribution.",
+					"dcat:accessURL": "https://example.com/access-url-2"
+				}
+			]
+		}
+	]
 }
 ```
 
@@ -146,3 +147,9 @@ graph LR
 ```
 
 This diagram shows the EOSC testbed with a SIMPL catalog and multiple SIMPL EDC connectors, which communicate with the Prometheus-X dataspace through the newly developed middleware. The middleware transforms the DSP messages from the SIMPL EDC connectors into a format compatible with the Prometheus-X Catalog API service.
+
+## Roles
+
+Role repartition for the work done on this building block is as follows:
+
+- Visions: Leading research, development & testing
