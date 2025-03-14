@@ -7,7 +7,7 @@ The goal of Dataspace Interoperability is to enable interactions between differe
 EOSC is deploying a SIMPL agent to interface with other dataspaces. As part of the Prometheus-X dataspace, we aim to explore this interoperability and start working on cross-dataspace subjects, beginning with SIMPL. The Skills & Education dataspace, where Prometheus-X operates, can benefit from this interoperability, enabling use cases such as recommending teachers or classes, matching them with relevant scientific articles, or finding related content.
 
 ## Technical Approach
-a
+
 SIMPL has already developed a MVP of a catalogue. Our first exploration will be to investigate how to make the Prometheus-X catalogue communicate with the SIMPL catalogue. The primary use case for this interoperability effort is to display catalogue offers from SIMPL inside Prometheus-X.
 
 ## IDS Dataspace Protocol (IDS DSP) and Eclipse Dataspace Connector (EDC)
@@ -21,6 +21,36 @@ The primary goal of this design document is to emphasize the first target milest
 The middleware will rely on the DSP's Catalog Protocol, which is based on the DCAT (Data Catalog Vocabulary) model. The middleware will process incoming catalogue messages from SIMPL, such as `cat:CatalogQueryMessage` and `cat:CatalogResponseMessage`, and transform them into a format compatible with the Prometheus-X catalogue.
 
 The transformation process will involve mapping the DCAT model used by SIMPL to the Prometheus-X catalogue model, ensuring that the essential metadata, such as title, description, and keywords, are preserved. The middleware will also handle any necessary data validation and normalization to ensure seamless integration with the Prometheus-X catalogue.
+
+### Features/main functionalities
+
+- Allowing interaction between SIMPL Catalogue & Prometheus-X Catalogue
+- Enabling of DSP-based SIMPL Catalog Offers in the Prometheus-X Catalogue.
+- Exploration of communication using the IDS Dataspace Protocol
+
+### Technical usage scenarios
+
+- Processing of DCAT SIMPL Catalogue Offers for interpretation in Prometheus-X Catalogues
+- Parsing of Prometheus-X Catalogue Offers into DCAT for interpretation from SIMPL Catalogues
+
+## Requirements
+
+| Requirement ID | Short Description | BB Input Format | BB Output Format | Requirement Type |
+| --- | --- | --- | --- | --- |
+| BB-REQ_ID__1 | Must be able to process DSP-based DCAT Offers | DCAT Datasets | REST API response | Functional (FUN) |
+| BB-REQ_ID__2 | Must allow the transformation of DSP-based DCAT Offers into processable PTX Catalogue Offers | REST API call | REST API response | Functional (FUN) |
+
+## Integrations
+
+### Direct Integrations with other BBs
+
+The work done in this building block will ensure communication with
+* Prometheus-X Catalog-API BB
+* Prometheus-X Contract-Manager BB for ODRL policies
+
+### Itegrations via the Prometheus-X Dataspace Connector
+
+The PDC will probably come into play regarding the communication through the DSP with connectors used in SIMPL.
 
 ## Current Limitations
 
