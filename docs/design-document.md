@@ -6,9 +6,13 @@ The goal of Dataspace Interoperability is to enable interactions between differe
 
 EOSC is deploying a SIMPL agent to interface with other dataspaces. As part of the Prometheus-X dataspace, we aim to explore this interoperability and start working on cross-dataspace subjects, beginning with SIMPL. The Skills & Education dataspace, where Prometheus-X operates, can benefit from this interoperability, enabling use cases such as recommending teachers or classes, matching them with relevant scientific articles, or finding related content.
 
+> The EOSC Association works to implement EOSC and the EOSC Federation to advance Open Science practices in the interest of creating new knowledge, promoting innovation and reinforcing public trust in science. See [EOSC website](https://eosc.eu/)
+
 ## Technical Approach
 
 SIMPL has already developed a MVP of a catalogue. Our first exploration will be to investigate how to make the Prometheus-X catalogue communicate with the SIMPL catalogue. The primary use case for this interoperability effort is to display catalogue offers from SIMPL inside Prometheus-X.
+
+> Simpl is an open source, secure middleware that supports data access and interoperability in European data initiatives. It provides multiple compatible components, free to use, that adhere to a common standard of data quality and data sharing. A future where reliable, updated data are available across industries is possible with Simpl. See [SIMPL website](https://simpl-programme.ec.europa.eu/)
 
 ## IDS Dataspace Protocol (IDS DSP) and Eclipse Dataspace Connector (EDC)
 
@@ -32,6 +36,25 @@ The transformation process will involve mapping the DCAT model used by SIMPL to 
 
 - Processing of DCAT SIMPL Catalogue Offers for interpretation in Prometheus-X Catalogues
 - Parsing of Prometheus-X Catalogue Offers into DCAT for interpretation from SIMPL Catalogues
+
+### Error scenarios
+
+- Invalid or malformed DCAT data received from SIMPL
+- Network connectivity issues between connectors
+- Transformation failures due to incompatible data structures
+- Authentication or authorization failures between dataspaces
+- Version mismatches in DSP protocol implementations
+
+## Third Party Components & Licenses
+
+The Dataspace Interoperability middleware will utilize several third-party components, each with its own license. The table below provides an overview of these components and their respective licenses:
+
+| Component | Description | License | Website |
+| --- | --- | --- | --- |
+| Eclipse Dataspace Connector (EDC) | Base connector implementation for dataspace integration | Apache License 2.0 | [Eclipse EDC](https://github.com/eclipse-edc/Connector) |
+| SIMPL Components | Components from the SIMPL middleware | EUPL 1.2 | [SIMPL](https://github.com/eclipse-tractusx/edc-minsimpl) |
+
+All third-party components have been selected to ensure compatibility with open-source requirements and to avoid any licensing conflicts. The middleware itself will be licensed under the MIT license, which is compatible with the licenses of the utilized components.
 
 ## Requirements
 
@@ -153,3 +176,62 @@ This diagram shows the EOSC testbed with a SIMPL catalog and multiple SIMPL EDC 
 Role repartition for the work done on this building block is as follows:
 
 - Visions: Leading research, development & testing
+
+## Test Plan
+
+The testing strategy for the Dataspace Interoperability middleware will follow a comprehensive approach to ensure all components work effectively together.
+
+### Unit Testing
+- Test individual functions and methods within the middleware
+- Validate data transformation logic between DCAT models and PTX catalog formats
+- Ensure proper error handling for malformed inputs
+
+### Integration Testing
+- Test communication between the middleware and SIMPL EDC connectors
+- Verify correct handling of DSP messages
+- Ensure proper integration with the Prometheus-X Catalog API
+
+### End-to-End Testing
+- Test the complete flow from SIMPL catalog offers through the middleware to display in Prometheus-X
+- Validate that metadata and content are preserved during transformation
+- Ensure proper handling of various offer types and structures
+
+### Performance Testing
+- Measure response times for catalog offer transformations
+- Test middleware under load with multiple simultaneous requests
+- Verify scalability for larger catalog datasets
+
+## Testing Scenarios
+
+The following scenarios will be used to validate the functionality of the Dataspace Interoperability middleware:
+
+### Scenario 1: Basic Catalog Offer Retrieval
+1. SIMPL EDC sends a basic catalog offer with minimal metadata
+2. Middleware receives and transforms the DSP message
+3. Transformed offer is sent to Prometheus-X Catalog API
+4. Verify the offer appears correctly in the Prometheus-X interface
+
+### Scenario 2: Complex Catalog Offer with Rich Metadata
+1. SIMPL EDC sends a catalog offer with extensive metadata, including keywords, descriptions, and multiple distributions
+2. Middleware processes the complex structure
+3. Verify all metadata is preserved in the Prometheus-X representation
+4. Test search and filtering capabilities using the transformed metadata
+
+### Scenario 3: Error Handling
+1. Send malformed DSP messages to the middleware
+2. Test with missing required fields
+3. Verify appropriate error responses and logging
+4. Ensure the system remains stable during error conditions
+
+### Scenario 4: Multiple Simultaneous Offers
+1. Send multiple catalog offers simultaneously from different SIMPL EDC connectors
+2. Verify all offers are processed correctly
+3. Test concurrency handling in the middleware
+4. Ensure no data corruption occurs during parallel processing
+
+### Scenario 5: Policy Handling
+1. Test catalog offers with attached ODRL policies
+2. Verify policy information is correctly extracted and processed
+3. Ensure appropriate access controls are applied in Prometheus-X
+4. Test scenarios with conflicting policies
+
