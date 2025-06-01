@@ -1,0 +1,88 @@
+{
+  "@context": "https://catalog.ptx/v1/serviceoffering",
+  "@type": "ServiceOffering",
+  "_id": "66d187f4ee71f9f096bae8ca",
+  "name": "provider",
+  "providedBy": "66d18724ee71f9f096bae810",
+  "aggregationOf": [
+    "https://catalog.ptx/v1/catalog/dataresources/66d1889cee71f9f096bae98b"
+  ],
+  "dependsOn": [],
+  "policy": [
+    {
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "description": {
+          "@id": "https://schema.org/description",
+          "@container": "@language"
+        }
+      },
+      "@id": "https://registry.ptx/static/references/rules/rule-access-1.json",
+      "title": {
+        "@type": "xsd/string",
+        "@value": "No Restriction"
+      },
+      "uid": "rule-access-1",
+      "name": "No Restriction",
+      "description": [
+        {
+          "@value": "CAN use data without any restrictions",
+          "@language": "en"
+        }
+      ],
+      "policy": {
+        "permission": [
+          {
+            "action": "use",
+            "target": "@{target}",
+            "constraint": []
+          }
+        ]
+      },
+      "requestedFields": [
+        "target"
+      ]
+    }
+  ],
+  "termsAndConditions": "",
+  "dataProtectionRegime": [],
+  "dataAccountExport": [],
+  "location": "WORLD",
+  "description": "provider",
+  "detailedDescription": "<p>provider</p>",
+  "image": "",
+  "keywords": [],
+  "dataResources": [
+    "https://catalog.ptx/v1/catalog/dataresources/66d1889cee71f9f096bae98b"
+  ],
+  "softwareResources": [],
+  "archived": false,
+  "visible": true,
+  "pricing": 10,
+  "pricingModel": [
+    "https://registry.ptx/static/references/pricing-model/usageBased.json"
+  ],
+  "businessModel": [
+    "https://registry.ptx/static/references/business-model/freemium.json"
+  ],
+  "maximumConsumption": "",
+  "maximumPerformance": "",
+  "pricingDescription": "desc",
+  "b2cDescription": [],
+  "purpose": "",
+  "userInteraction": false,
+  "status": "published",
+  "currency": "EUR",
+  "billingPeriod": "Monthly",
+  "compliantServiceOfferingVC": "",
+  "serviceOfferingVC": "",
+  "category": [
+    "hard skills"
+  ],
+  "schema_version": "1.2.0",
+  "createdAt": "2024-08-30T08:51:00.574Z",
+  "updatedAt": "2025-04-01T15:41:23.666Z",
+  "__v": 0,
+  "costPerAPICall": 0,
+  "setupFee": 0
+}

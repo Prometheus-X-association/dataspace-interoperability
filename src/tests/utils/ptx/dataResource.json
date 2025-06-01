@@ -1,0 +1,95 @@
+{
+  "@context": "https://catalop.ptx/v1/dataresource",
+  "@type": "DataResource",
+  "_id": "66d1889cee71f9f096bae98b",
+  "aggregationOf": [],
+  "name": "Provider",
+  "description": "provider",
+  "copyrightOwnedBy": [],
+  "license": ["MIT"],
+  "policy": [
+    {
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "description": {
+          "@id": "https://schema.org/description",
+          "@container": "@language"
+        }
+      },
+      "@id": "https://registry.ptx/static/references/rules/rule-access-1.json",
+      "title": {
+        "@type": "xsd/string",
+        "@value": "No Restriction"
+      },
+      "uid": "rule-access-1",
+      "name": "No Restriction",
+      "description": [
+        {
+          "@value": "CAN use data without any restrictions",
+          "@language": "en"
+        }
+      ],
+      "policy": {
+        "permission": [
+          {
+            "action": "use",
+            "target": "@{target}",
+            "constraint": []
+          }
+        ]
+      },
+      "requestedFields": [
+        "target"
+      ]
+    }
+  ],
+  "producedBy": "66d18724ee71f9f096bae810",
+  "exposedThrough": ["test"],
+  "obsoleteDateTime": "",
+  "expirationDateTime": "",
+  "containsPII": false,
+  "anonymized_extract": "",
+  "archived": false,
+  "attributes": [],
+  "category": "6090ff950d9b6451c24ac0b0",
+  "isPayloadForAPI": false,
+  "country_or_region": "WORLD",
+  "entries": 0,
+  "subCategories": [],
+  "schema_version": "1",
+  "b2cDescription": [],
+  "createdAt": "2024-08-30T08:53:48.891Z",
+  "updatedAt": "2024-08-30T08:53:48.940Z",
+  "__v": 0,
+  "representation": {
+    "_id": "66d1889cee71f9f096bae996",
+    "resourceID": "66d1889cee71f9f096bae98b",
+    "fileType": "",
+    "type": "REST",
+    "url": "https://provider-api.com/users",
+    "sqlQuery": "",
+    "className": "",
+    "method": "none",
+    "credential": "",
+    "createdAt": "2024-08-30T08:53:48.945Z",
+    "updatedAt": "2024-08-30T08:53:48.945Z",
+    "__v": 0,
+    "queryParams": [
+      "page",
+      "limit",
+      "skip"
+    ]
+  },
+  "apiResponseRepresentation": {
+    "_id": "679b78bde650f06f77f242b1",
+    "resourceID": "679b78bde650f06f77f242a6",
+    "type": "REST",
+    "url": "https://consumer-api.com/users",
+    "method": "none",
+    "credential": "",
+    "queryParams": [],
+    "createdAt": "2025-01-30T13:03:57.417Z",
+    "updatedAt": "2025-01-30T13:04:15.501Z",
+    "__v": 0
+  }
+}

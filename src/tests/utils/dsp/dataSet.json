@@ -1,0 +1,103 @@
+{
+  "@id": "66d187f4ee71f9f096bae8ca",
+  "@type": "ServiceOffering",
+  "dcterms:title": "provider",
+  "dcterms:description": "provider",
+  "dcterms:identifier": "66d187f4ee71f9f096bae8ca",
+  "odrl:hasPolicy": [
+    {
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "description": {
+          "@id": "https://schema.org/description",
+          "@container": "@language"
+        }
+      },
+      "@id": "https://registry.ptx/static/references/rules/rule-access-1.json",
+      "title": {
+        "@type": "xsd/string",
+        "@value": "No Restriction"
+      },
+      "uid": "rule-access-1",
+      "name": "No Restriction",
+      "description": [
+        {
+          "@value": "CAN use data without any restrictions",
+          "@language": "en"
+        }
+      ],
+      "policy": {
+        "permission": [
+          {
+            "action": "use",
+            "target": "@{target}",
+            "constraint": []
+          }
+        ]
+      },
+      "requestedFields": [
+        "target"
+      ]
+    }
+  ],
+  "dcterms:issued": "2024-08-30T08:51:00.574Z",
+  "dcterms:modified": "2025-04-01T15:41:23.666Z",
+  "dcat:version": "1.2.0",
+  "dcat:keyword": "",
+  "dcterms:hasPart": [
+    {
+      "@id": "https://catalog.ptx/v1/catalog/dataresources/66d1889cee71f9f096bae98b",
+      "@type": "DataResource",
+      "dcterms:title": "Provider",
+      "dcterms:description": "provider"
+    }
+  ],
+  "dcat:distribution": [
+    {
+      "dcat:accessURL": "https://provider-api.com/users",
+      "dcat:mediaType": "",
+      "dcat:accessService": {
+        "@id": "66d1889cee71f9f096bae98b",
+        "@type": "DataResource",
+        "dcterms:title": "Provider",
+        "dcterms:description": "provider",
+        "dcterms:issued": "2024-08-30T08:53:48.891Z",
+        "dcterms:modified": "2024-08-30T08:53:48.940Z",
+        "dcterms:license": [],
+        "dcat:version": "1",
+        "odrl:hasPolicy": [],
+        "dcterms:creator": {
+          "account": "66d18724ee71f9f096bae810"
+        },
+        "dcat:theme": {
+          "definition": "6090ff950d9b6451c24ac0b0",
+          "inScheme": {
+            "themes": [],
+            "themeTaxonomy": "default"
+          },
+          "topConceptOf": {
+            "themes": [],
+            "themeTaxonomy": "default"
+          }
+        },
+        "dcterms:rights": [],
+        "dcat:endpointURL": []
+      }
+    }
+  ],
+  "dcat:qualifiedRelation": [
+    {
+      "dcat:hadRole": "DataResource",
+      "dcterms:relation": "https://catalog.ptx/v1/catalog/dataresources/66d1889cee71f9f096bae98b",
+      "dcterms:description": "provider"
+    }
+  ],
+  "dcterms:creator": {
+    "account": "66d18724ee71f9f096bae810"
+  },
+  "dcterms:spatial": "WORLD",
+  "dcat:contactPoint": {
+    "url": []
+  },
+  "dcterms:conformsTo": ""
+}

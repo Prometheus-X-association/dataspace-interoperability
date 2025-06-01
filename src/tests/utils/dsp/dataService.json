@@ -1,0 +1,53 @@
+{
+  "@id": "66d1889cee71f9f096bae98b",
+  "@type": "DataResource",
+  "dcterms:title": "Provider",
+  "dcterms:description": "provider",
+  "dcterms:issued": "2024-08-30T08:53:48.891Z",
+  "dcterms:modified": "2024-08-30T08:53:48.940Z",
+  "dcterms:license": [],
+  "dcat:version": "1",
+  "odrl:hasPolicy": [],
+  "dcterms:creator": {
+    "account": "66d18724ee71f9f096bae810"
+  },
+  "dcat:theme": {
+    "definition": "6090ff950d9b6451c24ac0b0",
+    "inScheme": {
+      "themes": [],
+      "themeTaxonomy": "default"
+    },
+    "topConceptOf": {
+      "themes": [],
+      "themeTaxonomy": "default"
+    }
+  },
+  "dcterms:rights": [],
+  "dcat:endpointURL": [],
+  "dcat:servesDataset": [
+    {
+      "dcat:distribution": {
+        "dcat:accessURL": "https://provider-api.com/users",
+        "@id": "66d1889cee71f9f096bae996",
+        "@type": "ptx:representation",
+        "dcterms:issued": "2024-08-30T08:53:48.945Z",
+        "dcterms:modified": "2024-08-30T08:53:48.945Z",
+        "dcterms:accessRights": "none",
+        "dcterms:rights": "",
+        "dcat:mediaType": "REST"
+      }
+    },
+    {
+      "dcat:distribution": {
+        "dcat:accessURL": "https://consumer-api.com/users",
+        "@id": "679b78bde650f06f77f242b1",
+        "@type": "ptx:apiResponseRepresentation",
+        "dcterms:issued": "2025-01-30T13:03:57.417Z",
+        "dcterms:modified": "2025-01-30T13:04:15.501Z",
+        "dcterms:accessRights": "none",
+        "dcterms:rights": "",
+        "dcat:mediaType": "REST"
+      }
+    }
+  ]
+}
