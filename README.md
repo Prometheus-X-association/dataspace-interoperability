@@ -230,6 +230,23 @@ Expected output:
 
   18 passing (Xms)
 ```
+## Build
+
+To build use
+
+```bash
+npm run build
+```
+
+## Docs
+
+To generate a doc use
+
+```bash
+npm run doc
+```
+
+This command will generate documentation using type in the _html-doc_ directory
 
 ## Type Definitions
 

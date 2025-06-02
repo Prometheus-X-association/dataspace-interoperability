@@ -587,18 +587,12 @@ declare class GaiaXToPtxConvertor {
 }
 
 declare class PtxToDcatConvertor {
-    mapDataResourceToDataService(resource: IDataResource & {
-        _id: string;
-    }): Dataset;
-    mapSoftwareResourceToDataService(resource: ISoftwareResource & {
-        _id: string;
-    }): DataService;
-    mapServiceOfferingToDataSet(resource: IServiceOffering & {
-        _id: string;
-    }): Promise<Catalog$1>;
+    mapDataResourceToDataService(resource: IDataResource): Dataset;
+    mapSoftwareResourceToDataService(resource: ISoftwareResource): DataService;
+    mapServiceOfferingToDataSet(resource: IServiceOffering): Promise<Catalog$1>;
     private mapServiceOfferings;
     private mapResources;
-    mapPtxCatalogToDcatCatalog(resources: any[]): Promise<ICatalog$1>;
+    mapPtxCatalogToDcatCatalog(resources: any[]): Promise<Catalog$1>;
 }
 
 declare class DcatToPtxConvertor {
@@ -822,7 +816,11 @@ declare class DataOffering implements IDataOffering {
 }
 
 declare class PtxToSimplConvertor {
-    mapDataOfferingToDataResource(dataResource: DataResource): IDataOffering;
+    mapDataOfferingToDataResource(dataResource: DataResource): DataOffering;
+}
+
+declare class SimplToPtxConvertor {
+    mapDataOfferingToDataResource(dataOffering: IDataOffering): DataResource;
 }
 
 declare enum CatalogEnum {
@@ -907,4 +905,4 @@ interface IRole {
     'dcat:role': string;
 }
 
-export { Catalog, Checksum, ContractTemplate, Distribution$1 as DSPDistribution, DataCatalog, DataOffering, DataProduct, DataProductUsageContract, DataRepresentation, DataResource, DataSet, DataTransaction, DcatToPtxConvertor, Distribution, GaiaXToPtxConvertor, type IBillingSchema, type ICatalog, type ICatalogRecord, type IChecksum, type IContractTemplate, type IDataOffering, type IDataProductUsageContract, type IDataRepresentation, type IDataResource, type IDataSet, type IDataTransaction, type IDistribution$1 as IDistribution, type IOfferingPrice, type IPeriodOfTime, type IResource, type IRole, type IServiceOffering, type ISoftwareResource, PtxToDcatConvertor, PtxToGaiaXConvertor, PtxToSimplConvertor, Resource, ServiceOffering, SoftwareResource, type Standard };
+export { Catalog, Checksum, ContractTemplate, Distribution$1 as DSPDistribution, DataCatalog, DataOffering, DataProduct, DataProductUsageContract, DataRepresentation, DataResource, DataSet, DataTransaction, DcatToPtxConvertor, Distribution, GaiaXToPtxConvertor, type IBillingSchema, type ICatalog, type ICatalogRecord, type IChecksum, type IContractTemplate, type IDataOffering, type IDataProductUsageContract, type IDataRepresentation, type IDataResource, type IDataSet, type IDataTransaction, type IDistribution$1 as IDistribution, type IOfferingPrice, type IPeriodOfTime, type IResource, type IRole, type IServiceOffering, type ISoftwareResource, PtxToDcatConvertor, PtxToGaiaXConvertor, PtxToSimplConvertor, Resource, ServiceOffering, SimplToPtxConvertor, SoftwareResource, type Standard };
