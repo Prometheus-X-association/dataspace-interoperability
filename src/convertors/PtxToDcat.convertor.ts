@@ -5,16 +5,23 @@ import { DataService } from '../types/dsp/DataService';
 import { foaf } from '../types/dsp/foaf';
 import { skos } from '../types/dsp/skos';
 import { ISoftwareResource } from '../types/ptx/SoftwareResource';
-import {IServiceOffering } from '../types/ptx/ServiceOffering';
+import { IServiceOffering } from '../types/ptx/ServiceOffering';
 import { Catalog, ICatalog } from '../types/dsp/Catalog';
 import { Distribution } from '../types/dsp/Distribution';
 import { Relationship } from '../types/dsp/Relationship';
 import { vcard } from '../types/dsp/vcard';
-import {ConceptScheme} from "../types/dsp/skos/ConceptScheme";
 
+/**
+ * Prometheus-X Catalog to DCAT Catalog converter
+ */
 export class PtxToDcatConvertor {
 
-  public mapDataResourceToDataService(resource: IDataResource & { _id: string }): Dataset {
+  /**
+   * Map a Prometheus-X Data Resource to a DCAT Data Service
+   * @param resource IDataResource
+   * @return Dataset
+   */
+  public mapDataResourceToDataService(resource: IDataResource): Dataset {
     const dataService = new DataService();
     dataService['@id'] = resource._id;
     dataService['@type'] = 'DataResource';
@@ -73,7 +80,12 @@ export class PtxToDcatConvertor {
     return dataService;
   }
 
-  public mapSoftwareResourceToDataService(resource: ISoftwareResource & { _id: string }): DataService {
+  /**
+   * Map a Prometheus-X Software Resource to a DCAT Data Service
+   * @param resource ISoftwareResource
+   * @return DataService
+   */
+  public mapSoftwareResourceToDataService(resource: ISoftwareResource): DataService {
     const dataService = new DataService();
     dataService['@id'] = resource._id;
     dataService['@type'] = 'SoftwareResource';
@@ -85,9 +97,9 @@ export class PtxToDcatConvertor {
     dataService['dcat:version'] = resource.schema_version;
     dataService['odrl:hasPolicy'] = resource.policy;
 
-    dataService['dcterms:creator'] = new foaf.Agent({ account: resource.providedBy});
+    dataService['dcterms:creator'] = new foaf.Agent({ account: resource.providedBy });
 
-    dataService['dcat:theme'] = new skos.Concept({definition: resource.category});
+    dataService['dcat:theme'] = new skos.Concept({ definition: resource.category });
 
     dataService['dcterms:rights'] = resource.copyrightOwnedBy;
 
@@ -127,7 +139,14 @@ export class PtxToDcatConvertor {
 
     return dataService;
   }
-  public async mapServiceOfferingToDataSet(resource: IServiceOffering & { _id: string }): Promise<Catalog> {
+
+  /**
+   * Map a Prometheus-X Service Offering to a DCAT Data Set
+   * @param resource IServiceOffering
+   * @async
+   * @return Promise<Catalog>
+   */
+  public async mapServiceOfferingToDataSet(resource: IServiceOffering): Promise<Catalog> {
     const dataset = new Dataset();
 
     const distributions: Distribution[] = [];
@@ -193,6 +212,13 @@ export class PtxToDcatConvertor {
     return dataset;
   }
 
+  /**
+   * Map Prometheus-X Service Offerings to DCAT Data Sets
+   * @param resources any[]
+   * @async
+   * @return Promise<any[]>
+   * @private
+   */
   private async mapServiceOfferings(resources: any[]): Promise<any[]> {
     const mapping = [];
     for(const resource of resources){
@@ -202,6 +228,13 @@ export class PtxToDcatConvertor {
     return mapping;
   }
 
+  /**
+   * Map Prometheus-X Resources to DCAT Resources
+   * @param dataResources any[]
+   * @param softwareResources any[]
+   * @return any[]
+   * @private
+   */
   private mapResources(dataResources: any[], softwareResources: any[]): any[] {
     const mapping = [];
     for(const dataResource of dataResources){
@@ -214,17 +247,25 @@ export class PtxToDcatConvertor {
     return mapping;
   }
 
-  public async mapPtxCatalogToDcatCatalog(resources: any[]): Promise<ICatalog> {
+  /**
+   * Map a Prometheus-X Catalog to a DCAT Catalog
+   * @param resources any[]
+   * @async
+   * @return Promise<ICatalog>
+   */
+  public async mapPtxCatalogToDcatCatalog(resources: any[]): Promise<Catalog> {
     const serviceOfferings = resources.filter((element) =>  element['@type']?.toLowerCase() === 'serviceoffering');
     const dataResources = resources.filter((element) => element['@type']?.toLowerCase() === 'dataresource');
     const softwareResources = resources.filter((element) => element['@type']?.toLowerCase() === 'softwareresource');
 
-    return {
-      '@context': 'https://w3id.org/dspace/2024/1/context.json',
-      '@type': 'dcat:Catalog',
-      'dcat:dataset': await this.mapServiceOfferings(serviceOfferings),
-      'dcat:service': this.mapResources(dataResources, softwareResources),
-      'foaf:homepage': 'catalog/offers',
-    };
+    const catalog = new Catalog();
+    
+    catalog['@context'] = 'https://w3id.org/dspace/2024/1/context.json';
+    catalog['@type'] = 'dcat:Catalog';
+    catalog['dcat:dataset'] = await this.mapServiceOfferings(serviceOfferings);
+    catalog['dcat:service'] = this.mapResources(dataResources, softwareResources);
+    catalog['foaf:homepage'] = 'catalog/offers';
+
+    return catalog;
   }
 }

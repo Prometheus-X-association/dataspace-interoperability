@@ -3,7 +3,7 @@ import dataResource from './utils/ptx/dataResource.json'
 import softwareResource from './utils/ptx/softwareResource.json'
 import serviceOffering from './utils/ptx/serviceOffering.json'
 import { mockDataResource } from './utils/mock';
-import { PtxToGaiaXConvertor } from '../convertor/PtxToGaiaX.convertor';
+import { PtxToGaiaXConvertor } from '../convertors/PtxToGaiaX.convertor';
 import { foaf } from '../types/dsp/foaf';
 import { skos } from '../types/dsp/skos';
 import { vcard } from '../types/gaia-x/vcard';

@@ -1,8 +1,16 @@
-import { DataOffering, IDataOffering } from '../types/simpl/DataOffering';
+import { DataOffering } from '../types/simpl/DataOffering';
 import { DataResource } from '../types/ptx/DataResource';
 
+/**
+ * Prometheus-X Catalog to Simpl Catalog converter
+ */
 export class PtxToSimplConvertor {
-  public mapDataOfferingToDataResource(dataResource: DataResource): IDataOffering {
+  /**
+   * Map a Prometheus-X Data Resource to a Simpl Data Offering
+   * @param dataResource DataResource
+   * @return IDataOffering
+   */
+  public mapDataOfferingToDataResource(dataResource: DataResource): DataOffering {
     if (!dataResource._id) {
       throw new Error('DataResource must have an _id property');
     }

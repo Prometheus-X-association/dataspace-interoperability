@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { DcatToPtxConvertor } from '../convertor/DcatToPtx.convertor';
+import { DcatToPtxConvertor } from '../convertors/DcatToPtx.convertor';
 import dataService from './utils/dsp/dataService.json';
 import dataService2 from './utils/dsp/dataService2.json';
 import dataSet from './utils/dsp/dataSet.json';

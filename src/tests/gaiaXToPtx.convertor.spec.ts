@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { GaiaXToPtxConvertor } from '../convertor/GaiaXToPtx.convertor';
+import { GaiaXToPtxConvertor } from '../convertors/GaiaXToPtx.convertor';
 import gaiaxDataSet from './utils/gaiax/gaiaxDataSet.json';
 import gaiaxDataSet2 from './utils/gaiax/gaiaxDataSet2.json';
 import dataProduct from './utils/gaiax/dataProduct.json';

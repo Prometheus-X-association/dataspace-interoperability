@@ -6,7 +6,15 @@ import { IDataSet } from '../types/gaia-x/DataSet';
 import { DataCatalog } from '../types/gaia-x/DataCatalog';
 import { DataRepresentation } from '../types/ptx/DataRepresentation';
 
+/**
+ * Gaia-X Catalog to Prometheus-X Catalog converter
+ */
 export class GaiaXToPtxConvertor {
+  /**
+   * Map a Gaia-X Data Set to a Prometheus-X Data Resource
+   * @param dataSet IDataSet
+   * @return DataResource
+   */
   public mapDataSetToDataResource(dataSet: IDataSet): DataResource {
     if (!dataSet['@id']) {
       throw new Error('dataSet must have an @id property');
@@ -51,6 +59,11 @@ export class GaiaXToPtxConvertor {
     return resource;
   }
 
+  /**
+   * Map a Gaia-X Data Set to a Prometheus-X Software Resource
+   * @param resource IDataSet
+   * @return SoftwareResource
+   */
   public mapDataSetToSoftwareResource(resource: IDataSet): SoftwareResource {
     if (!resource['@id']) {
       throw new Error('resource must have an @id property');
@@ -94,6 +107,12 @@ export class GaiaXToPtxConvertor {
     return softwareResource;
   }
 
+  /**
+   * Map a Gaia-X Data Product to a Prometheus-X Service Offering
+   * @param resource DataProduct
+   * @async
+   * @return Promise<ServiceOffering>
+   */
   public async mapDataProductToServiceOffering(resource: DataProduct): Promise<ServiceOffering> {
     if (!resource['@id']) {
       throw new Error('resource must have an @id property');
@@ -130,6 +149,16 @@ export class GaiaXToPtxConvertor {
     return serviceOffering;
   }
 
+  /**
+   * Map a Gaia-X Catalog to a Prometheus-X Catalog
+   * @param catalog DataCatalog
+   * @async
+   * @return Promise<{
+   *       serviceOfferings: IServiceOffering[],
+   *       dataResources: IDataResource[]
+   *       softwareResources: ISoftwareResource[]
+   *   }>
+   */
   async mapGaiaXCatalogToPtxCatalog(catalog: DataCatalog): Promise<{
         serviceOfferings: IServiceOffering[],
         dataResources: IDataResource[]

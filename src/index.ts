@@ -1,9 +1,10 @@
 // Converters
-export { PtxToGaiaXConvertor } from './convertor/PtxToGaiaX.convertor';
-export { GaiaXToPtxConvertor } from './convertor/GaiaXToPtx.convertor';
-export { PtxToDcatConvertor } from './convertor/PtxToDcat.convertor';
-export { DcatToPtxConvertor } from './convertor/DcatToPtx.convertor';
-export { PtxToSimplConvertor } from './convertor/PtxToSimpl.convertor';
+export { PtxToGaiaXConvertor } from './convertors/PtxToGaiaX.convertor';
+export { GaiaXToPtxConvertor } from './convertors/GaiaXToPtx.convertor';
+export { PtxToDcatConvertor } from './convertors/PtxToDcat.convertor';
+export { DcatToPtxConvertor } from './convertors/DcatToPtx.convertor';
+export { PtxToSimplConvertor } from './convertors/PtxToSimpl.convertor';
+export { SimplToPtxConvertor } from './convertors/SimplToPtx.convertor';
 
 // PTX Types
 export { IDataResource, DataResource } from './types/ptx/DataResource';

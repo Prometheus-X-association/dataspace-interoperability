@@ -4,11 +4,18 @@ import { IDataService } from '../types/dsp/DataService';
 import { ISoftwareResource, SoftwareResource } from '../types/ptx/SoftwareResource';
 import { IServiceOffering, ServiceOffering } from '../types/ptx/ServiceOffering';
 import { ICatalog } from '../types/dsp/Catalog';
-import axios from 'axios';
 import { DataRepresentation } from '../types/ptx/DataRepresentation';
 
+/**
+ * DSP DCAT Catalog to Prometheus-X Catalog
+ */
 export class DcatToPtxConvertor {
 
+  /**
+   * map a DCAT Data Service to a Prometheus-X Data Resource
+   * @param dataService IDataService
+   * @return DataResource
+   */
   public mapDataServiceToDataResource(dataService: IDataService): DataResource {
     if (!dataService['@id']) {
       throw new Error('DataService must have an @id property');
@@ -60,8 +67,12 @@ export class DcatToPtxConvertor {
     return resource;
   }
 
-
-  mapDataServiceToSoftwareResource(dataService: IDataService): SoftwareResource {
+  /**
+   * map a DCAT Data Service to a Prometheus-X Software Resource
+   * @param dataService IDataService
+   * @return SoftwareResource
+   */
+  public mapDataServiceToSoftwareResource(dataService: IDataService): SoftwareResource {
     if (!dataService['@id']) {
       throw new Error('DataService must have an @id property');
     }
@@ -110,7 +121,12 @@ export class DcatToPtxConvertor {
     return resource;
   }
 
-  mapDataSetToServiceOffering(dataset: IDataset): ServiceOffering {
+  /**
+   * map a DCAT Data Set to a Prometheus-X Service Offering
+   * @param dataset IDataset
+   * @return ServiceOffering
+   */
+  public mapDataSetToServiceOffering(dataset: IDataset): ServiceOffering {
     const serviceOffering = new ServiceOffering({
       _id:  dataset['@id'],
       name:  dataset['dcterms:title'],
@@ -141,7 +157,16 @@ export class DcatToPtxConvertor {
     return serviceOffering;
   }
 
-  mapDcatCatalogToPtxCatalog(catalog: ICatalog): {
+  /**
+   * map a DCAT Catalog to a Prometheus-X Service Offering
+   * @param catalog ICatalog
+   * @return {
+   *       serviceOfferings: IServiceOffering[],
+   *       dataResources: IDataResource[]
+   *       softwareResources: ISoftwareResource[]
+   *   }
+   */
+  public mapDcatCatalogToPtxCatalog(catalog: ICatalog): {
       serviceOfferings: IServiceOffering[],
       dataResources: IDataResource[]
       softwareResources: ISoftwareResource[]

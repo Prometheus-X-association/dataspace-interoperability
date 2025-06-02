@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { PtxToSimplConvertor } from '../convertor/PtxToSimpl.convertor';
+import { PtxToSimplConvertor } from '../convertors/PtxToSimpl.convertor';
 import dataResource from './utils/ptx/dataResource.json';
 import { DataResource } from '../types/ptx/DataResource';
 

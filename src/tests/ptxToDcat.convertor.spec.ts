@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import dataResource from './utils/ptx/dataResource.json'
 import softwareResource from './utils/ptx/softwareResource.json'
 import serviceOffering from './utils/ptx/serviceOffering.json'
-import { PtxToDcatConvertor } from '../convertor/PtxToDcat.convertor';
+import { PtxToDcatConvertor } from '../convertors/PtxToDcat.convertor';
 import { mockDataResource } from './utils/mock';
 
 describe('Prometheus-X Catalog to DCAT catalog', function () {

@@ -11,7 +11,15 @@ import { DataCatalog } from '../types/gaia-x/DataCatalog';
 import { skos } from '../types/dsp/skos';
 import { Relationship } from '../types/dsp/Relationship';
 
+/**
+ * Prometheus-X Catalog to Gaia-X Catalog converter
+ */
 export class PtxToGaiaXConvertor {
+  /**
+   * Map a Prometheus-X Data Resource to a Gaia-X Data Set
+   * @param resource IDataResource
+   * @return DataSet
+   */
   public mapDataResourceToDataSet(resource: IDataResource): DataSet {
     const dataset = new DataSet({
       'dct:distributions': [],
@@ -96,6 +104,11 @@ export class PtxToGaiaXConvertor {
     return dataset;
   }
 
+  /**
+   * Map a Prometheus-X Software Resource to a Gaia-X Data Set
+   * @param resource ISoftwareResource
+   * @return DataSet
+   */
   public mapSoftwareResourceToDataSet(resource: ISoftwareResource): DataSet {
     const dataSet = new DataSet({
       'dct:description': resource.description,
@@ -116,7 +129,7 @@ export class PtxToGaiaXConvertor {
     dataSet['dcat:version'] = resource.schema_version;
     dataSet['odrl:hasPolicy'] = resource.policy;
 
-    dataSet['dcterms:creator'] = new foaf.Agent({account: resource.providedBy});
+    dataSet['dcterms:creator'] = new foaf.Agent({ account: resource.providedBy });
     const conceptScheme = new skos.ConceptScheme({
       themes: [],
       themeTaxonomy: ''
@@ -178,6 +191,12 @@ export class PtxToGaiaXConvertor {
     return dataSet;
   }
 
+  /**
+   * Map a Prometheus-X Service Offering to a Gaia-X Data Product
+   * @param resource IServiceOffering
+   * @async
+   * @return Promise<DataProduct>
+   */
   public async mapServiceOfferingToDataProduct(resource: IServiceOffering): Promise<DataProduct> {
 
     const agent = new foaf.Agent({ account: resource.providedBy ?? '' });
@@ -244,6 +263,13 @@ export class PtxToGaiaXConvertor {
     return dataProduct;
   }
 
+  /**
+   * Map Prometheus-X Service Offerings to Gaia-X Data Products
+   * @param resources any[]
+   * @async
+   * @return Promise<any[]>
+   * @private
+   */
   private async mapServiceOfferings(resources: any[]): Promise<any[]> {
     const mapping = [];
     for(const resource of resources){
@@ -253,6 +279,13 @@ export class PtxToGaiaXConvertor {
     return mapping;
   }
 
+  /**
+   * Map Prometheus-X Resources to Gaia-X Resources
+   * @param dataResources any[]
+   * @param softwareResources any[]
+   * @return any[]
+   * @private
+   */
   private mapResources(dataResources: any[], softwareResources: any[]): any[] {
     const mapping = [];
     for(const dataResource of dataResources){
@@ -265,6 +298,12 @@ export class PtxToGaiaXConvertor {
     return mapping;
   }
 
+  /**
+   * Map a Prometheus-X Catalog to a Gaia-X Catalog
+   * @param resources any[]
+   * @async
+   * @return Promise<DataCatalog>
+   */
   public async mapPtxCatalogToGaiaXCatalog(resources: any[]): Promise<DataCatalog> {
     const serviceOfferings = resources.filter((element) =>  element['@type']?.toLowerCase() === 'serviceoffering');
     const dataResources = resources.filter((element) => element['@type']?.toLowerCase() === 'dataresource');

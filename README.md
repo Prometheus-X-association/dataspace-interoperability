@@ -1,23 +1,20 @@
-# Interop Library
+# Data space Interoperability Library
 
-A TypeScript library for handling interoperability between different data and service catalogs, with a focus on Gaia-X, PTX, DCAT, and SIMPL standards.
+A TypeScript library for handling interoperability between different catalog, with a focus on Gaia-X, Prometheus-X, DCAT, and SIMPL.
 
 ## Overview
 
-This library provides TypeScript interfaces and classes for working with various data and service catalog formats, including:
+This library provides TypeScript interfaces and classes for working with various dataspace catalog formats, including:
 
-- Gaia-X Data Products and Services
-- PTX Resources and Services
-- DCAT Data Services and Datasets
-- SIMPL Data Offerings
+- Gaia-X
+- Prometheus-X
+- Data Space Protocol DCAT
+- SIMPL
 
 ## Features
 
 - Type-safe interfaces for data structures
 - Consistent serialization/deserialization
-- Support for multiple catalog formats
-- Built-in validation and type checking
-- Comprehensive documentation
 - Format conversion utilities:
   - PTX ↔ DCAT
   - PTX ↔ Gaia-X
@@ -36,7 +33,7 @@ Contains bidirectional converters between different formats:
 - `PtxToDcatConvertor`: Converts PTX to DCAT format
 - `PtxToGaiaXConvertor`: Converts PTX to Gaia-X format
 - `PtxToSimplConvertor`: Converts PTX to SIMPL format
-- `SimplToPtx`: Converts SIMPL to PTX format
+- `SimplToPtxConvertor`: Converts SIMPL to PTX format
 
 ### PTX Types (`src/types/ptx/`)
 
@@ -156,6 +153,82 @@ function convertPtxToSimpl(dataResource: IDataResource) {
     throw error;
   }
 }
+```
+
+## Tests
+
+The library includes comprehensive test coverage for all converters and their functionality. Tests are written using Chai and Mocha.
+
+### Test Coverage
+
+The test suite covers the following converters and their functionality:
+
+#### PTX ↔ DCAT Converter Tests
+- DataResource to DataService conversion
+- SoftwareResource to DataService conversion
+- ServiceOffering to DataSet conversion
+- Full PTX Catalog to DCAT Catalog conversion
+- DataService to DataResource conversion
+- DataService to SoftwareResource conversion
+- DataSet to ServiceOffering conversion
+- DCAT Catalog to PTX Catalog conversion
+
+#### PTX ↔ Gaia-X Converter Tests
+- DataResource to DataSet conversion
+- SoftwareResource to DataSet conversion
+- ServiceOffering to DataProduct conversion
+- Full PTX Catalog to Gaia-X Catalog conversion
+- DataSet to DataResource conversion
+- DataSet to SoftwareResource conversion
+- DataProduct to ServiceOffering conversion
+- Gaia-X Catalog to PTX Catalog conversion
+
+#### PTX ↔ SIMPL Converter Tests
+- DataOffering to DataResource conversion
+- DataResource to DataOffering conversion
+
+### Running Tests
+
+To run the test suite:
+
+```bash
+npm run test
+```
+
+Expected output:
+```
+  DCAT Catalog to Prometheus-X Catalog
+    ✔ should map a dataService to a dataResource
+    ✔ should map a dataServices to a softwareResource
+    ✔ should map a dataSet to a serviceOffering
+    ✔ should map a DCAT Catalog to a Prometheus-X Catalog
+
+  Gaia-X Catalog to Prometheus-X Catalog
+    ✔ should map a dataSet to a dataResource
+    ✔ should map a dataSet to a softwareResource
+    ✔ should map a dataProduct to a serviceOffering
+    ✔ should map a Gaia-X Catalog to a Prometheus-X Catalog
+
+  Prometheus-X Catalog to DCAT catalog
+    ✔ should map a dataResource to a dataService
+    ✔ should map a softwareResource to a dataServices
+    ✔ should map a serviceOffering to a dataSet
+    ✔ should map a Prometheus-X Catalog to a DCAT Catalog
+
+  Prometheus-X Catalog to Gaia-X catalog
+    ✔ should map a dataResource to a dataService
+    ✔ should map a softwareResource to a dataServices
+    ✔ should map a serviceOffering to a dataSet
+    ✔ should map a Prometheus-X Catalog to a DCAT Catalog
+
+  Prometheus-X Catalog to Simpl Catalog
+    ✔ should map a DataResource to a DataOffering
+
+  Simpl Catalog to Prometheus-X Catalog
+    ✔ should map a DataOffering to a DataResource
+
+
+  18 passing (Xms)
 ```
 
 ## Type Definitions
