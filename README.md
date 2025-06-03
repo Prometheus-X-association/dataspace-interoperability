@@ -1,6 +1,11 @@
-# Data space Interoperability Library
+# Dataspace-interoperability
 
 A TypeScript library for handling interoperability between different catalog, with a focus on Gaia-X, Prometheus-X, DCAT, and SIMPL.
+
+## Prerequisites
+
+- npm (Node Package Manager): minimum 9.6.7
+- node.js (JavaScript runtime environment): minimum 18.17.0
 
 ## Overview
 
@@ -24,7 +29,7 @@ This library provides TypeScript interfaces and classes for working with various
 
 The library is organized into several main sections:
 
-### Converters (`src/convertor/`)
+### Converters (`src/convertors/`)
 
 Contains bidirectional converters between different formats:
 
@@ -84,7 +89,7 @@ Contains interfaces and classes for SIMPL related structures:
 ### Installation
 
 ```bash
-npm install interop-library
+npm install dataspace-interoperability
 ```
 
 ### Format Conversion Examples
@@ -92,8 +97,8 @@ npm install interop-library
 #### Converting PTX to Gaia-X
 
 ```typescript
-import { PtxToGaiaXConvertor } from 'interop-library/convertor/PtxToGaiaX.convertor';
-import { IServiceOffering } from 'interop-library/types/ptx/ServiceOffering';
+import { PtxToGaiaXConvertor } from 'dataspace-interoperability/convertors/PtxToGaiaX.convertor';
+import { IServiceOffering } from 'dataspace-interoperability/types/ptx/ServiceOffering';
 
 // Create a converter instance
 const converter = new PtxToGaiaXConvertor();
@@ -114,8 +119,8 @@ async function convertToGaiaX(serviceOffering: IServiceOffering) {
 #### Converting DCAT to PTX
 
 ```typescript
-import { DcatToPtxConvertor } from 'interop-library/convertor/DcatToPtx.convertor';
-import { IDataService } from 'interop-library/types/dsp/DataService';
+import { DcatToPtxConvertor } from 'dataspace-interoperability/convertors/DcatToPtx.convertor';
+import { IDataService } from 'dataspace-interoperability/types/dsp/DataService';
 
 // Create a converter instance
 const converter = new DcatToPtxConvertor();
@@ -136,8 +141,8 @@ function convertDcatToPtx(dataService: IDataService) {
 #### Converting PTX to SIMPL
 
 ```typescript
-import { PtxToSimplConvertor } from 'interop-library/convertor/PtxToSimpl.convertor';
-import { IDataResource } from 'interop-library/types/ptx/DataResource';
+import { PtxToSimplConvertor } from 'dataspace-interoperability/convertors/PtxToSimpl.convertor';
+import { IDataResource } from 'dataspace-interoperability/types/ptx/DataResource';
 
 // Create a converter instance
 const converter = new PtxToSimplConvertor();
@@ -192,6 +197,18 @@ The test suite covers the following converters and their functionality:
 To run the test suite:
 
 ```bash
+git clone https://github.com/Prometheus-X-association/dataspace-interoperability.git
+```
+
+```bash
+cd dataspace-interoperability
+```
+
+```bash
+npm install
+```
+
+```bash
 npm run test
 ```
 
@@ -230,7 +247,48 @@ Expected output:
 
   18 passing (Xms)
 ```
-## Build
+## Local usage
+
+
+```bash
+git clone https://github.com/Prometheus-X-association/dataspace-interoperability.git
+```
+
+```bash
+cd dataspace-interoperability
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run build
+```
+
+In the project where you want to add the library, add this line to the dependencies section of your package.json.
+
+```yaml
+'dataspace-interoperability': 'path/to/dataspace-interoperability/dist'
+```
+
+```bash
+npm install
+```
+
+Or you can use npm link in the dataspace-interoperability project
+
+```bash
+npm link
+```
+
+In the project where you want to add the library
+
+```bash
+npm link dataspace-interoperability
+```
+
+### Build
 
 To build use
 
@@ -238,7 +296,7 @@ To build use
 npm run build
 ```
 
-## Docs
+### Docs
 
 To generate a doc use
 

@@ -1,5 +1,5 @@
 {
-  "name": "dataspace-interoperability-library",
+  "name": "dataspace-interoperability",
   "version": "1.0.0-beta.1",
   "description": "Interoperability library",
   "main": "./dist/index.js",
@@ -13,9 +13,24 @@
     "test": "npx ts-mocha -p tsconfig.json ./src/tests/**/*.spec.ts --timeout 4000 --exit --test",
     "doc": "typedoc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "interoperability",
+    "dataspace",
+    "library"
+  ],
+  "author": "Nicolas Gretten",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Visions-Nicolas/interop-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Visions-Nicolas/interop-library/issues"
+  },
+  "homepage": "https://github.com/Visions-Nicolas/interop-library#readme",
   "devDependencies": {
     "@babel/parser": "^7.26.2",
     "@babel/preset-typescript": "^7.26.0",
