@@ -1,0 +1,75 @@
+{
+  "@context": {
+    "gax-validation": "http://w3id.org/gaia-x/validation#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "simpl": "http://w3id.org/gaia-x/simpl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "did:web:registry.gaia-x.eu:DataOffering:test",
+  "rdf:type": {
+    "@id": "simpl:DataOffering"
+  },
+  "simpl:billingSchema": {
+    "@type": { "@id": "simpl:BillingSchema" },
+    "simpl:billingSchemaDocument": "Billing Schema 1",
+    "simpl:billingSchemaHashAlg": "test",
+    "simpl:billingSchemaHashValue": "test",
+    "simpl:billingSchemaURL": "test"
+  },
+  "simpl:contractTemplate": {
+    "@type": { "@id": "simpl:ContractTemplate" },
+    "simpl:contractTemplateDocument": "Contract Template 1",
+    "simpl:contractTemplateHashAlg": "test",
+    "simpl:contractTemplateHashValue": "test",
+    "simpl:contractTemplateURL": "test"
+  },
+  "simpl:dataProperties": {
+    "@type": { "@id": "simpl:DataProperties" },
+    "simpl:format": "test",
+    "simpl:providerDataAddress": "test"
+  },
+  "simpl:generalServiceProperties": {
+    "@type": { "@id": "simpl:GeneralServiceProperties" },
+    "simpl:description": "test description",
+    "simpl:inLanguage": "en",
+    "simpl:name": "test name",
+    "simpl:offeringType": "test",
+    "simpl:serviceAccessPoint": {
+      "@type": "xsd:anyURI",
+      "@value": "https://test.com"
+    }
+  },
+  "simpl:offeringPrice": {
+    "@type": { "@id": "simpl:OfferingPrice" },
+    "simpl:currency": "EUR",
+    "simpl:license": {
+      "@type": "xsd:anyURI",
+      "@value": "https://test.com/license"
+    },
+    "simpl:price": {
+      "@type": "xsd:decimal",
+      "@value": 100
+    },
+    "simpl:priceType": "free"
+  },
+  "simpl:consumerInformation": {
+    "@type": { "@id": "simpl:ConsumerInformation" },
+    "simpl:contact": "test@test.com",
+    "simpl:providedBy": "test-consumer",
+    "simpl:signature": "test"
+  },
+  "simpl:servicePolicy": {
+    "@type": { "@id": "simpl:ServicePolicy" },
+    "simpl:access-policy": "test-access-policy",
+    "simpl:usage-policy": "test-usage-policy"
+  },
+  "simpl:slaAgreements": {
+    "@type": { "@id": "simpl:SlaAgreements" },
+    "simpl:slaAgreementsDocument": "Sla Agreements 1",
+    "simpl:slaAgreementsHashAlg": "test",
+    "simpl:slaAgreementsHashValue": "test",
+    "simpl:slaAgreementsURL": "test"
+  }
+}
