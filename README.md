@@ -1,4 +1,4 @@
-# Dataspace-interoperability
+# Dataspace interoperability
 
 A TypeScript library for handling interoperability between different catalog, with a focus on Gaia-X, Prometheus-X, DCAT, and SIMPL.
 
@@ -323,3 +323,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Design document can be found [here](./docs/design-document.md).
