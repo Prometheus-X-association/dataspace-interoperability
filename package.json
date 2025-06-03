@@ -18,19 +18,19 @@
     "dataspace",
     "library"
   ],
-  "author": "Nicolas Gretten",
+  "author": "Nicolas Gretten nicolas@visionspol.eu",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Visions-Nicolas/interop-library.git"
+    "url": "https://github.com/Prometheus-X-association/dataspace-interoperability.git"
   },
   "bugs": {
-    "url": "https://github.com/Visions-Nicolas/interop-library/issues"
+    "url": "https://github.com/Prometheus-X-association/dataspace-interoperability/issues"
   },
-  "homepage": "https://github.com/Visions-Nicolas/interop-library#readme",
+  "homepage": "https://github.com/Prometheus-X-association/dataspace-interoperability#readme",
   "devDependencies": {
     "@babel/parser": "^7.26.2",
     "@babel/preset-typescript": "^7.26.0",

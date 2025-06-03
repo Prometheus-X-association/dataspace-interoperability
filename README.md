@@ -4,8 +4,9 @@ A TypeScript library for handling interoperability between different catalog, wi
 
 ## Prerequisites
 
-- npm (Node Package Manager): minimum 9.6.7
-- node.js (JavaScript runtime environment): minimum 18.17.0
+- npm: minimum 9.6.7
+- pnpm: minimum 10.3.0
+- node.js: minimum 18.17.0
 
 ## Overview
 
@@ -89,7 +90,7 @@ Contains interfaces and classes for SIMPL related structures:
 ### Installation
 
 ```bash
-npm install dataspace-interoperability
+pnpm i github:Prometheus-X-association/dataspace-interoperability#1.0.0-beta.1
 ```
 
 ### Format Conversion Examples
