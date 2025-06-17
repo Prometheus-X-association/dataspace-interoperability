@@ -16,6 +16,7 @@ This library provides TypeScript interfaces and classes for working with various
 - Prometheus-X
 - Data Space Protocol DCAT
 - SIMPL
+- EDC
 
 ## Features
 
@@ -25,6 +26,7 @@ This library provides TypeScript interfaces and classes for working with various
   - PTX ↔ DCAT
   - PTX ↔ Gaia-X
   - PTX ↔ SIMPL
+  - PTX ↔ EDC
 
 ## Structure
 
@@ -34,12 +36,14 @@ The library is organized into several main sections:
 
 Contains bidirectional converters between different formats:
 
-- `DcatToPtxConvertor`: Converts DCAT to PTX format
-- `GaiaXToPtxConvertor`: Converts Gaia-X to PTX format
 - `PtxToDcatConvertor`: Converts PTX to DCAT format
 - `PtxToGaiaXConvertor`: Converts PTX to Gaia-X format
 - `PtxToSimplConvertor`: Converts PTX to SIMPL format
+- `PtxToEDCConvertor`: Converts PTX to EDC format
+- `DcatToPtxConvertor`: Converts DCAT to PTX format
+- `GaiaXToPtxConvertor`: Converts Gaia-X to PTX format
 - `SimplToPtxConvertor`: Converts SIMPL to PTX format
+- `EDCToPtxConvertor`: Converts EDC to PTX format
 
 ### PTX Types (`src/types/ptx/`)
 
@@ -84,6 +88,56 @@ Contains interfaces and classes for SIMPL related structures:
 - `BillingSchema`: Defines billing schema structures
 - `ContractTemplate`: Handles contract templates
 - `OfferingPrice`: Manages offering price information
+
+### EDC Types (`src/types/edc/`)
+
+Contains interfaces and classes for SIMPL related structures:
+
+- `EdcCatalog`: Represents an EDC Catalog
+- `EdcDataService`: Represents datasService
+- `EdcDataset`: Represents datasets
+- `EdcDistribution`: Represents distribution
+
+## Mappings
+
+### PTX ↔ DCAT Mapping
+
+| PTX Type                                              | DCAT Type                                     |
+|-------------------------------------------------------|-----------------------------------------------|
+| [DataResource](src/types/ptx/DataResource.ts)         | [DataService](src/types/dsp/DataService.ts)   |
+| [SoftwareResource](src/types/ptx/SoftwareResource.ts) | [DataService](src/types/dsp/DataService.ts)   |
+| [ServiceOffering](src/types/ptx/ServiceOffering.ts)   | [DataSet](src/types/dsp/Dataset.ts)           |
+| [Catalog](src/types/ptx/Catalog.ts)                   | [Catalog](src/types/dsp/Catalog.ts)           |
+| [Representation](src/types/ptx/Representation.ts)     | [Distribution](src/types/dsp/Distribution.ts) |
+
+### PTX ↔ EDC Mapping
+
+| PTX Type                                              | EDC Type                                         |
+|-------------------------------------------------------|--------------------------------------------------|
+| [DataResource](src/types/ptx/DataResource.ts)         | [DataSet](src/types/edc/EdcDataset.ts)           |
+| [SoftwareResource](src/types/ptx/SoftwareResource.ts) | [DataSet](src/types/edc/EdcDataset.ts)           |
+| [ServiceOffering](src/types/ptx/ServiceOffering.ts)   | [DataService](src/types/edc/EdcDataService.ts)   |
+| [Catalog](src/types/ptx/Catalog.ts)                   | [Catalog](src/types/edc/EdcCatalog.ts)           |
+| [Representation](src/types/ptx/Representation.ts)     | [Distribution](src/types/edc/EdcDistribution.ts) |
+
+### PTX ↔ Gaia-X Mapping
+
+| PTX Type                                              | Gaia-X Type                                      |
+|-------------------------------------------------------|--------------------------------------------------|
+| [DataResource](src/types/ptx/DataResource.ts)         | [DataSet](src/types/gaia-x/DataSet.ts)           |
+| [SoftwareResource](src/types/ptx/SoftwareResource.ts) | [DataSet](src/types/gaia-x/DataSet.ts)           |
+| [ServiceOffering](src/types/ptx/ServiceOffering.ts)   | [DataProduct](src/types/gaia-x/DataProduct.ts)   |
+| [Catalog](src/types/ptx/Catalog.ts)                   | [DataCatalog](src/types/gaia-x/DataCatalog.ts)   |
+| [Representation](src/types/ptx/Representation.ts)     | [Distribution](src/types/gaia-x/Distribution.ts) |
+
+### PTX ↔ SIMPL Mapping
+
+| PTX Type                                              | SIMPL Type                                      |
+|-------------------------------------------------------|-------------------------------------------------|
+| [DataResource](src/types/ptx/DataResource.ts)         | To define                                       |
+| [SoftwareResource](src/types/ptx/SoftwareResource.ts) | To define                                       |
+| [ServiceOffering](src/types/ptx/ServiceOffering.ts)   | [DataOffering](src/types/simpl/DataOffering.ts) |
+| [Representation](src/types/ptx/Representation.ts)     | To define                                       |
 
 ## Usage
 
@@ -193,6 +247,10 @@ The test suite covers the following converters and their functionality:
 - DataOffering to DataResource conversion
 - DataResource to DataOffering conversion
 
+#### PTX ↔ EDC Converter Tests
+- EDC Catalog to PTX Catalog conversion
+- PTX Catalog to EDC Catalog conversion
+
 ### Running Tests
 
 To run the test suite:
@@ -215,11 +273,14 @@ npm run test
 
 Expected output:
 ```
-  DCAT Catalog to Prometheus-X Catalog
+    DCAT Catalog to Prometheus-X Catalog
     ✔ should map a dataService to a dataResource
     ✔ should map a dataServices to a softwareResource
     ✔ should map a dataSet to a serviceOffering
     ✔ should map a DCAT Catalog to a Prometheus-X Catalog
+
+  EDC Catalog to Prometheus-X Catalog
+    ✔ should map an EDC Catalog to a Prometheus-X Catalog
 
   Gaia-X Catalog to Prometheus-X Catalog
     ✔ should map a dataSet to a dataResource
@@ -232,6 +293,9 @@ Expected output:
     ✔ should map a softwareResource to a dataServices
     ✔ should map a serviceOffering to a dataSet
     ✔ should map a Prometheus-X Catalog to a DCAT Catalog
+
+  Prometheus-X Catalog to EDC Catalog
+    ✔ should map a Prometheus-X Catalog to an EDC Catalog (46ms)
 
   Prometheus-X Catalog to Gaia-X catalog
     ✔ should map a dataResource to a dataService
@@ -246,7 +310,7 @@ Expected output:
     ✔ should map a DataOffering to a DataResource
 
 
-  18 passing (Xms)
+  20 passing (Xms)
 ```
 ## Local usage
 
@@ -315,6 +379,10 @@ All interfaces and classes are fully typed with TypeScript, providing:
 - Optional property handling
 - Proper serialization/deserialization
 - Documentation for all properties and methods
+
+## EDC additional information
+
+To realize the EDC mapping the [MinimalViableDataspace](https://github.com/eclipse-edc/MinimumViableDataspace) has been deployed locally for test and development purposes.
 
 ## Contributing
 
