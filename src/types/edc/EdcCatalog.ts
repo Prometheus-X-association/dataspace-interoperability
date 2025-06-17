@@ -22,7 +22,7 @@ export class EdcCatalog extends Catalog implements IEdcCatalog {
     public 'isCatalog'?: string;
     public 'originator'?: string;
     public 'dspace:participantId'?: string;
-    public '@context'?: Object;
+    declare public '@context'?: Object;
     /**
      * Converts the instance to a JSON object.
      * @returns {IEdcCatalog} The JSON representation of the instance.

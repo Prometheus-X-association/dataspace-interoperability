@@ -1,14 +1,14 @@
 import { expect } from 'chai';
-import { EDCToPtxConvertor } from '../convertors/EDCToPtx.convertor';
+import { EdcToPtxConvertor } from '../convertors/EdcToPtx.convertor';
 import { mockDataResource, mockParticipant } from './utils/mock';
 import catalog from './utils/edc/catalog.json';
 import {IEdcCatalog} from "../types/edc/EdcCatalog";
 
 describe('EDC Catalog to Prometheus-X Catalog', function () {
-  let convertor: EDCToPtxConvertor;
+  let convertor: EdcToPtxConvertor;
 
   beforeEach(function () {
-    convertor = new EDCToPtxConvertor();
+    convertor = new EdcToPtxConvertor();
   });
 
   it('should map an EDC Catalog to a Prometheus-X Catalog', async function () {

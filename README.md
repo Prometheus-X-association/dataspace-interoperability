@@ -39,11 +39,11 @@ Contains bidirectional converters between different formats:
 - `PtxToDcatConvertor`: Converts PTX to DCAT format
 - `PtxToGaiaXConvertor`: Converts PTX to Gaia-X format
 - `PtxToSimplConvertor`: Converts PTX to SIMPL format
-- `PtxToEDCConvertor`: Converts PTX to EDC format
+- `PtxToEdcConvertor`: Converts PTX to EDC format
 - `DcatToPtxConvertor`: Converts DCAT to PTX format
 - `GaiaXToPtxConvertor`: Converts Gaia-X to PTX format
 - `SimplToPtxConvertor`: Converts SIMPL to PTX format
-- `EDCToPtxConvertor`: Converts EDC to PTX format
+- `EdcToPtxConvertor`: Converts EDC to PTX format
 
 ### PTX Types (`src/types/ptx/`)
 

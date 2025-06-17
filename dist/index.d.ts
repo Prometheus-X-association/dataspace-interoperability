@@ -413,6 +413,10 @@ declare class Dataset extends Resource implements IDataset {
 interface IEdcDataService extends IDataService {
     'dcat:endpointUrl'?: string;
 }
+declare class EdcDataService extends DataService implements IEdcDataService {
+    'dcat:endpointUrl'?: string;
+    toJSON(): IEdcDataService;
+}
 
 interface IDataService extends IResource {
     'dcat:endpointURL'?: string | string[];
@@ -852,6 +856,45 @@ declare class SimplToPtxConvertor {
     mapDataOfferingToDataResource(dataOffering: IDataOffering): DataResource;
 }
 
+interface IEdcCatalog extends ICatalog$1 {
+    'id'?: string;
+    'isCatalog'?: string;
+    'originator'?: string;
+    'dspace:participantId'?: string;
+    '@context'?: Object;
+}
+declare class EdcCatalog extends Catalog$1 implements IEdcCatalog {
+    'id'?: string;
+    'isCatalog'?: string;
+    'originator'?: string;
+    'dspace:participantId'?: string;
+    '@context'?: Object;
+    toJSON(): IEdcCatalog;
+}
+
+interface IEdcDataset extends IDataset {
+}
+declare class EdcDataset extends Catalog$1 implements IEdcDataset {
+    toJSON(): IEdcDataset;
+}
+
+declare class PtxToEdcConvertor {
+    mapResourceToDataSet(resource: IDataResource | ISoftwareResource, serviceOfferingId?: string): Promise<EdcDataset>;
+    mapServiceOfferingToSubCatalog(resource: IServiceOffering): Promise<EdcDataset>;
+    private mapResources;
+    mapPtxCatalogToEdcCatalog(resources: any[]): Promise<EdcCatalog>;
+}
+
+declare class EdcToPtxConvertor {
+    private mapDatasetToResource;
+    private mapCatalogToServiceOffering;
+    mapEdcCatalogToPtxCatalog(catalog: IEdcCatalog): {
+        serviceOfferings: IServiceOffering[];
+        dataResources: IDataResource[];
+        softwareResources: ISoftwareResource[];
+    };
+}
+
 declare enum CatalogEnum {
     SERVICE_OFFERING = "serviceofferings",
     DATA_RESOURCE = "dataresources",
@@ -934,4 +977,12 @@ interface IRole {
     'dcat:role': string;
 }
 
-export { Catalog, Checksum, ContractTemplate, Distribution$1 as DSPDistribution, DataCatalog, DataOffering, DataProduct, DataProductUsageContract, DataRepresentation, DataResource, DataSet, DataTransaction, DcatToPtxConvertor, Distribution, GaiaXToPtxConvertor, type IBillingSchema, type ICatalog, type ICatalogRecord, type IChecksum, type IContractTemplate, type IDataOffering, type IDataProductUsageContract, type IDataRepresentation, type IDataResource, type IDataSet, type IDataTransaction, type IDistribution$1 as IDistribution, type IOfferingPrice, type IPeriodOfTime, type IResource, type IRole, type IServiceOffering, type ISoftwareResource, PtxToDcatConvertor, PtxToGaiaXConvertor, PtxToSimplConvertor, Resource, ServiceOffering, SimplToPtxConvertor, SoftwareResource, type Standard };
+interface IEdcDistribution extends IDistribution$1 {
+    'dct:format'?: IResource;
+}
+declare class EdcDistribution extends Distribution$1 implements IEdcDistribution {
+    'dct:format'?: Resource;
+    toJSON(): IEdcDistribution;
+}
+
+export { Catalog, Checksum, ContractTemplate, Distribution$1 as DSPDistribution, DataCatalog, DataOffering, DataProduct, DataProductUsageContract, DataRepresentation, DataResource, DataSet, DataTransaction, DcatToPtxConvertor, Distribution, EdcCatalog, EdcDataService, EdcDataset, EdcDistribution, EdcToPtxConvertor, GaiaXToPtxConvertor, type IBillingSchema, type ICatalog, type ICatalogRecord, type IChecksum, type IContractTemplate, type IDataOffering, type IDataProductUsageContract, type IDataRepresentation, type IDataResource, type IDataSet, type IDataTransaction, type IDistribution$1 as IDistribution, type IEdcCatalog, type IEdcDataService, type IEdcDataset, type IEdcDistribution, type IOfferingPrice, type IPeriodOfTime, type IResource, type IRole, type IServiceOffering, type ISoftwareResource, PtxToDcatConvertor, PtxToEdcConvertor, PtxToGaiaXConvertor, PtxToSimplConvertor, Resource, ServiceOffering, SimplToPtxConvertor, SoftwareResource, type Standard };

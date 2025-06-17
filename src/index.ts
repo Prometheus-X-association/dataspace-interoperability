@@ -5,6 +5,8 @@ export { PtxToDcatConvertor } from './convertors/PtxToDcat.convertor';
 export { DcatToPtxConvertor } from './convertors/DcatToPtx.convertor';
 export { PtxToSimplConvertor } from './convertors/PtxToSimpl.convertor';
 export { SimplToPtxConvertor } from './convertors/SimplToPtx.convertor';
+export { PtxToEdcConvertor } from './convertors/PtxToEdc.convertor';
+export { EdcToPtxConvertor } from './convertors/EdcToPtx.convertor';
 
 // PTX Types
 export { IDataResource, DataResource } from './types/ptx/DataResource';
@@ -35,3 +37,10 @@ export { IDataOffering, DataOffering } from './types/simpl/DataOffering';
 export { IBillingSchema } from './types/simpl/DataOffering';
 export { IContractTemplate, ContractTemplate } from './types/simpl/DataOffering';
 export { IOfferingPrice } from './types/simpl/DataOffering';
+
+
+// EDC Types
+export { IEdcCatalog, EdcCatalog } from './types/edc/EdcCatalog';
+export { IEdcDataset, EdcDataset } from './types/edc/EdcDataset';
+export { IEdcDistribution, EdcDistribution } from './types/edc/EdcDistribution';
+export { IEdcDataService, EdcDataService } from './types/edc/EdcDataService';

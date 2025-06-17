@@ -11,7 +11,7 @@ import {IDataRepresentation} from '../types/ptx/DataRepresentation';
 /**
  * EDC Catalog to Prometheus-X Catalog converter
  */
-export class EDCToPtxConvertor {
+export class EdcToPtxConvertor {
   /**
    * Map an EDC Dataset to a PTX Resource (Data or Software)
    * @param dataset EdcDataset
