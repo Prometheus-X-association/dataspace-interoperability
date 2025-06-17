@@ -42,7 +42,6 @@ The transformation process will involve mapping the DCAT model used by SIMPL to 
 - Invalid or malformed DCAT data received from SIMPL
 - Network connectivity issues between connectors
 - Transformation failures due to incompatible data structures
-- Authentication or authorization failures between dataspaces
 - Version mismatches in DSP protocol implementations
 
 ## Third Party Components & Licenses
@@ -70,7 +69,6 @@ All third-party components have been selected to ensure compatibility with open-
 The work done in this building block will ensure communication with
 
 - Prometheus-X Catalog-API BB
-- Prometheus-X Contract-Manager BB for ODRL policies
 
 ### Itegrations via the Prometheus-X Dataspace Connector
 
