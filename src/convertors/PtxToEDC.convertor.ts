@@ -149,8 +149,11 @@ export class PtxToEdcConvertor {
       throw Error('The catalog must contain resource and offer for only one participant.')
     }
 
+    //get catalog url from context
+    const catalogUrl = serviceOfferings[0]['@context'].split('/v1')[0]
+
     //get the participant
-    const response = await axios.get(`http://localhost:4040/v1/catalog/participants/${uniqueParticipant[0]}`);
+    const response = await axios.get(`${catalogUrl}/v1/catalog/participants/${uniqueParticipant[0]}`);
 
     const catalog = new EdcCatalog();
 

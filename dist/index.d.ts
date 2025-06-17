@@ -7,6 +7,18 @@ interface IDataRepresentation {
     credential?: string;
     createdAt?: string | Date;
     updatedAt?: string | Date;
+    input?: {
+        format?: string;
+        description?: string;
+        snippet?: string;
+        size?: string;
+    };
+    output?: {
+        format?: string;
+        description?: string;
+        snippet?: string;
+    };
+    processingTime?: string;
 }
 declare class DataRepresentation implements IDataRepresentation {
     _id?: string;
@@ -17,6 +29,18 @@ declare class DataRepresentation implements IDataRepresentation {
     credential?: string;
     createdAt?: string | Date;
     updatedAt?: string | Date;
+    input?: {
+        format?: string;
+        description?: string;
+        snippet?: string;
+        size?: string;
+    };
+    output?: {
+        format?: string;
+        description?: string;
+        snippet?: string;
+    };
+    processingTime?: string;
     constructor(init: IDataRepresentation);
     toJSON(): IDataRepresentation;
 }
@@ -290,7 +314,7 @@ interface IRelationship extends IResource {
 
 interface IResource {
     '@id'?: string;
-    '@context'?: string;
+    '@context'?: string | Object;
     '@type'?: string;
     'dcterms:title'?: string;
     'dcterms:description'?: string;
@@ -328,7 +352,7 @@ interface IResource {
 }
 declare class Resource implements IResource {
     '@id'?: string;
-    '@context'?: string;
+    '@context'?: string | Object;
     '@type'?: string;
     'dcterms:title'?: string;
     'dcterms:description'?: string;
@@ -386,6 +410,10 @@ declare class Dataset extends Resource implements IDataset {
     toJSON(): IDataset;
 }
 
+interface IEdcDataService extends IDataService {
+    'dcat:endpointUrl'?: string;
+}
+
 interface IDataService extends IResource {
     'dcat:endpointURL'?: string | string[];
     'dcat:endpointDescription'?: string;
@@ -395,6 +423,7 @@ declare class DataService extends Resource implements IDataService {
     'dcat:endpointURL'?: string | string[];
     'dcat:endpointDescription'?: string;
     'dcat:servesDataset'?: IDataset[];
+    toJSON(): IEdcDataService;
 }
 
 interface IDistribution$1 {
@@ -544,7 +573,7 @@ interface ICatalog$1 extends IDataset {
     'dcat:themeTaxonomy'?: string[];
     'dcat:resource'?: IResource | IResource[];
     'dcat:dataset'?: IDataset | IDataset[];
-    'dcat:service'?: IDataService[];
+    'dcat:service'?: IDataService | IDataService[];
     'dcat:catalog'?: ICatalog$1 | ICatalog$1[];
 }
 declare class Catalog$1 extends Dataset implements ICatalog$1 {
@@ -552,7 +581,7 @@ declare class Catalog$1 extends Dataset implements ICatalog$1 {
     'dcat:themeTaxonomy'?: string[];
     'dcat:resource'?: IResource | IResource[];
     'dcat:dataset'?: IDataset | IDataset[];
-    'dcat:service'?: IDataService[];
+    'dcat:service'?: IDataService | IDataService[];
     'dcat:catalog'?: ICatalog$1 | ICatalog$1[];
     toJSON(): ICatalog$1;
 }

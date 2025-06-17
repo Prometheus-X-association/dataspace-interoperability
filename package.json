@@ -1,6 +1,6 @@
 {
   "name": "dataspace-interoperability",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Interoperability library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -11,6 +11,7 @@
   "scripts": {
     "build": "tsup",
     "test": "npx ts-mocha -p tsconfig.json ./src/tests/**/*.spec.ts --timeout 4000 --exit --test",
+    "test:edc": "npx ts-mocha -p tsconfig.json ./src/tests/ptxToEdc.convertor.spec.ts --timeout 4000 --exit --test",
     "doc": "typedoc"
   },
   "keywords": [

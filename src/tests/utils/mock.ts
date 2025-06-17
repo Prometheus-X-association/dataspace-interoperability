@@ -2,7 +2,7 @@ import nock from 'nock';
 import dataResource from './ptx/dataResource.json'
 
 export const mockParticipant = () => {
-    nock('http://localhost:4040')
+    nock('https://catalog.ptx')
         .persist()
         .get('/v1/catalog/participants/66d18724ee71f9f096bae810')
         .reply(200, {
