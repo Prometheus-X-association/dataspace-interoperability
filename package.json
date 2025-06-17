@@ -11,7 +11,6 @@
   "scripts": {
     "build": "tsup",
     "test": "npx ts-mocha -p tsconfig.json ./src/tests/**/*.spec.ts --timeout 4000 --exit --test",
-    "test:edc": "npx ts-mocha -p tsconfig.json ./src/tests/ptxToEdc.convertor.spec.ts --timeout 4000 --exit --test",
     "doc": "typedoc"
   },
   "keywords": [
