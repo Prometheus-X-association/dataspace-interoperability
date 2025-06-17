@@ -1,6 +1,36 @@
 import nock from 'nock';
 import dataResource from './ptx/dataResource.json'
 
+export const mockParticipant = () => {
+    nock('http://localhost:4040')
+        .persist()
+        .get('/v1/catalog/participants/66d18724ee71f9f096bae810')
+        .reply(200, {
+                '@context': 'http://host.docker.internal:4040/v1/participant',
+                '@type': 'Participant',
+                _id: '66d18724ee71f9f096bae810',
+                did: 'did:web:66d18724ee71f9f096bae810:provider',
+                legalName: 'Test-DataProvider',
+                legalPerson: {
+                    registrationNumber: '',
+                    headquartersAddress: { countryCode: '' },
+                    legalAddress: { countryCode: '' },
+                    parentOrganization: [],
+                    subOrganization: []
+                },
+                termsAndConditions: '',
+                associatedOrganisation: '66d18724ee71f9f096bae80f',
+                schema_version: '1',
+                dataspaceConnectorAppKey: '189a0d1e69550eeba9d3161b5fd91b519a8ab4c93403ec4ca3f8bb3f2c11db9069bf8868a85e0ec695e9b699c8de9823fe0d47e4f2b55a41fb2f00ffb8fcf21d',
+                dataspaceEndpoint: 'http://host.docker.internal:3333/',
+                logo: '',
+                createdAt: '2024-08-30T08:47:32.824Z',
+                updatedAt: '2025-04-17T08:32:57.232Z',
+                __v: 0
+            }
+        );
+}
+
 export const mockDataResource = () => {
     // Mocking ecosystem contract
     nock('https://catalog.ptx')

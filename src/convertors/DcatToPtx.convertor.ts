@@ -182,7 +182,7 @@ export class DcatToPtxConvertor {
       }
     }
 
-    if(catalog['dcat:service']){
+    if(catalog['dcat:service'] && Array.isArray(catalog['dcat:service'])){
       for(const dataService of catalog['dcat:service']){
         let mapping;
         if(dataService['@type'] === 'DataResource'){

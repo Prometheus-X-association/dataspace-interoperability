@@ -8,7 +8,7 @@ import { IRelationship } from './Relationship';
 
 export interface IResource {
     '@id'?: string;
-    '@context'?: string;
+    '@context'?: string | Object;
     '@type'?: string;
     'dcterms:title'?: string;
     'dcterms:description'?: string;
@@ -47,7 +47,7 @@ export interface IResource {
 
 export class Resource implements IResource {
   public '@id'?: string;
-  public '@context'?: string;
+  public '@context'?: string | Object;
   public '@type'?: string;
   public 'dcterms:title'?: string;
   public 'dcterms:description'?: string;

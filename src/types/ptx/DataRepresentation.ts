@@ -18,6 +18,20 @@ export interface IDataRepresentation {
     credential?: string;
     createdAt?: string | Date;
     updatedAt?: string | Date;
+    // Input/Output parameters
+    input?: {
+        format?: string,
+        description?: string,
+        snippet?: string,
+        size?: string,
+    },
+    output?: {
+        format?: string,
+        description?: string,
+        snippet?: string,
+    },
+    // Processing time
+    processingTime?: string,
 }
 
 /**
@@ -34,6 +48,20 @@ export class DataRepresentation implements IDataRepresentation {
   public credential?: string;
   public createdAt?: string | Date;
   public updatedAt?: string | Date;
+    // Input/Output parameters
+  public input?: {
+      format?: string;
+      description?: string;
+      snippet?: string;
+      size?: string;
+  };
+ public output?: {
+     format?: string;
+     description?: string;
+     snippet?: string;
+ };
+    // Processing time
+    public processingTime?: string;
 
   /**
    * Constructs a new DataRepresentation instance.
@@ -56,7 +84,10 @@ export class DataRepresentation implements IDataRepresentation {
       method: this.method,
       credential: this.credential,
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
+      input: this.input,
+      output: this.output,
+      processingTime: this.processingTime,
     };
   }
 }

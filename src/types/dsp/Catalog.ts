@@ -7,7 +7,7 @@ export interface ICatalog extends IDataset {
   'dcat:themeTaxonomy'?: string[];
   'dcat:resource'?: IResource | IResource[];
   'dcat:dataset'?: IDataset | IDataset[];
-  'dcat:service'?: IDataService[];
+  'dcat:service'?: IDataService | IDataService[];
   'dcat:catalog'?: ICatalog | ICatalog[];
 }
 
@@ -16,7 +16,7 @@ export class Catalog extends Dataset implements ICatalog {
   public 'dcat:themeTaxonomy'?: string[];
   public 'dcat:resource'?: IResource | IResource[];
   public 'dcat:dataset'?: IDataset | IDataset[];
-  public 'dcat:service'?: IDataService[];
+  public 'dcat:service'?: IDataService | IDataService[];
   public 'dcat:catalog'?: ICatalog | ICatalog[];
 
   /**
@@ -25,6 +25,7 @@ export class Catalog extends Dataset implements ICatalog {
    */
   public toJSON(): ICatalog {
     return {
+      ...super.toJSON(),
       'foaf:homepage': this['foaf:homepage'],
       'dcat:themeTaxonomy': this['dcat:themeTaxonomy'],
       'dcat:resource': this['dcat:resource'],
