@@ -144,7 +144,7 @@ Contains interfaces and classes for SIMPL related structures:
 ### Installation
 
 ```bash
-pnpm i github:Prometheus-X-association/dataspace-interoperability#1.0.0-beta.1
+pnpm i github:Prometheus-X-association/dataspace-interoperability#1.0.0-beta.2
 ```
 
 ### Format Conversion Examples
