@@ -1,6 +1,5 @@
 import { DataUsageAgreement, IDataUsageAgreement } from './DataUsageAgreement';
-import { Distribution as DSPDistribution } from '../dsp/Distribution';
-import { IDistribution as IDSPDistribution } from '../dsp/Distribution';
+import { Distribution as DSPDistribution, IDistribution as IDSPDistribution } from '../dsp/Distribution';
 
 /**
  * Represents a dataset distribution.

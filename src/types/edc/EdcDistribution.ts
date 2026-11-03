@@ -1,6 +1,5 @@
-import { IDistribution } from '../dsp/Distribution';
-import { Distribution } from '../dsp/Distribution';
-import {IResource, Resource} from "../dsp/Resource";
+import { Distribution, IDistribution } from '../dsp/Distribution';
+import { IResource, Resource } from '../dsp/Resource';
 /**
  * Represents an EDC Distribution.
  * @interface IEdcDistribution

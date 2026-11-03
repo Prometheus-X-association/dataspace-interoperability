@@ -1,7 +1,6 @@
 import { DataSet, IDataSet } from './DataSet';
 import { DataUsage, IDataUsage } from './DataUsage';
-import { IPolicy, Policy } from './Policy';
-import { vcard } from './vcard';
+import { Policy } from './Policy';
 import { IResource, Resource } from '../dsp/Resource';
 
 /**

@@ -1,12 +1,11 @@
 import axios from 'axios';
 import {IDataResource} from '../types/ptx/DataResource';
 import {Dataset} from '../types/dsp/Dataset';
-import {DataService} from '../types/dsp/DataService';
 import {foaf} from '../types/dsp/foaf';
 import {skos} from '../types/dsp/skos';
 import {ISoftwareResource} from '../types/ptx/SoftwareResource';
 import {IServiceOffering} from '../types/ptx/ServiceOffering';
-import {EdcDistribution, IEdcDistribution} from '../types/edc/EdcDistribution';
+import {EdcDistribution} from '../types/edc/EdcDistribution';
 import {EdcCatalog} from '../types/edc/EdcCatalog';
 import {EdcDataService} from '../types/edc/EdcDataService';
 import {EdcDataset, IEdcDataset} from '../types/edc/EdcDataset';
@@ -146,7 +145,7 @@ export class PtxToEdcConvertor {
     const uniqueParticipant = [...new Set(participantId)];
 
     if(uniqueParticipant.length > 1){
-      throw Error('The catalog must contain resource and offer for only one participant.')
+      throw new Error('The catalog must contain resource and offer for only one participant.')
     }
 
     //get catalog url from context
@@ -160,7 +159,6 @@ export class PtxToEdcConvertor {
     catalog['@id'] = response.data['_id'];
     catalog['@type'] = 'dcat:Catalog';
 
-    catalog['@type'] = 'dcat:Catalog';
     catalog['dcat:dataset'] = new EdcDataset();
 
     const service  = new EdcDataService();

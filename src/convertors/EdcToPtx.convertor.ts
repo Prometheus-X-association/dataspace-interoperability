@@ -1,12 +1,11 @@
-import {IDataResource} from '../types/ptx/DataResource';
-import {ISoftwareResource} from '../types/ptx/SoftwareResource';
-import {IServiceOffering} from '../types/ptx/ServiceOffering';
-import {EdcDistribution} from '../types/edc/EdcDistribution';
-import {EdcCatalog, IEdcCatalog} from '../types/edc/EdcCatalog';
-import {EdcDataService} from '../types/edc/EdcDataService';
-import {EdcDataset} from '../types/edc/EdcDataset';
-import {IDataService} from '../types/dsp/DataService';
-import {IDataRepresentation} from '../types/ptx/DataRepresentation';
+import { IDataResource } from '../types/ptx/DataResource';
+import { ISoftwareResource } from '../types/ptx/SoftwareResource';
+import { IServiceOffering } from '../types/ptx/ServiceOffering';
+import { EdcDistribution } from '../types/edc/EdcDistribution';
+import { EdcCatalog, IEdcCatalog } from '../types/edc/EdcCatalog';
+import { EdcDataService } from '../types/edc/EdcDataService';
+import { EdcDataset } from '../types/edc/EdcDataset';
+import { IDataService } from '../types/dsp/DataService';
 
 /**
  * EDC Catalog to Prometheus-X Catalog converter
@@ -55,8 +54,8 @@ export class EdcToPtxConvertor {
             input: {
               format: distribution['dcat:mediaType']
             }
-          } as IDataRepresentation
-        } as IDataResource;
+          }
+        };
 
         dataResources.push(resource);
       } else if (distribution['dct:format'] && distribution['dct:format']['@id'] === 'HttpData-PUSH') {
@@ -78,14 +77,14 @@ export class EdcToPtxConvertor {
             input: {
               format: distribution['dcat:mediaType']
             }
-          } as IDataRepresentation,
+          },
           aggregationOf: Array.isArray(dataset['dcterms:hasPart']) 
             ? dataset['dcterms:hasPart'].map((part: any) => part['@id'])
             : [],
           locationAddress: dataset['dcterms:language']?.split(';').map((code: string) => ({
             countryCode: code
           })) || []
-        } as ISoftwareResource;
+        };
 
         softwareResources.push(resource);
       } else {
@@ -107,8 +106,8 @@ export class EdcToPtxConvertor {
             input: {
               format: distribution['dcat:mediaType']
             }
-          } as IDataRepresentation
-        } as IDataResource;
+          }
+        };
         dataResources.push(resource);
       }
     }

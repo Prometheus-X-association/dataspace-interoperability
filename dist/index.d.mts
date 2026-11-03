@@ -623,6 +623,8 @@ declare class PtxToDcatConvertor {
     mapDataResourceToDataService(resource: IDataResource): Dataset;
     mapSoftwareResourceToDataService(resource: ISoftwareResource): DataService;
     mapServiceOfferingToDataSet(resource: IServiceOffering): Promise<Catalog$1>;
+    private mapResourceToDataService;
+    private mapRepresentationToDistribution;
     private mapServiceOfferings;
     private mapResources;
     mapPtxCatalogToDcatCatalog(resources: any[]): Promise<Catalog$1>;

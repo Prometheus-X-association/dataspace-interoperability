@@ -1,7 +1,6 @@
 import { DataUsageAgreement, IDataUsageAgreement } from './DataUsageAgreement';
 import { IDistribution, Distribution } from './Distribution';
-import { Dataset as DSPDataSet } from '../dsp/Dataset';
-import { IDataset as IDSPDataSet } from '../dsp/Dataset';
+import { Dataset as DSPDataSet, IDataset as IDSPDataSet } from '../dsp/Dataset';
 
 /**
  * Represents a Data Set.

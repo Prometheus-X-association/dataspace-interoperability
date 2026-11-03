@@ -1,5 +1,4 @@
-import { ICatalog } from '../dsp/Catalog';
-import { Catalog } from '../dsp/Catalog';
+import { Catalog, ICatalog } from '../dsp/Catalog';
 /**
  * Represents a Gaia-X Data Catalog.
  * @interface IDataCatalog

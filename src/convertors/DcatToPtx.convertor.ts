@@ -43,7 +43,7 @@ export class DcatToPtxConvertor {
 
       if (!distribution) continue;
       if (Array.isArray(distribution)) {
-        throw new Error('Distribution cannot be an array');
+        throw new TypeError('Distribution cannot be an array');
       }
 
       const rep = new DataRepresentation({
@@ -59,8 +59,8 @@ export class DcatToPtxConvertor {
 
       if (!resource.representation) {
         resource.representation = rep;
-      } else if(!resource.apiResponseRepresentation) {
-        resource.apiResponseRepresentation = rep;
+      } else {
+        resource.apiResponseRepresentation ??= rep;
       }
     }
 
@@ -99,7 +99,7 @@ export class DcatToPtxConvertor {
   
       if (!distribution) continue;
       if (Array.isArray(distribution)) {
-        throw new Error('Distribution cannot be an array');
+        throw new TypeError('Distribution cannot be an array');
       }
   
       const rep = new DataRepresentation({
@@ -113,9 +113,7 @@ export class DcatToPtxConvertor {
         type: distribution['dcat:mediaType']
       });
   
-      if (!resource.representation) {
-        resource.representation = rep;
-      }
+      resource.representation ??= rep;
     }
   
     return resource;

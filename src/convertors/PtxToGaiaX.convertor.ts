@@ -50,8 +50,6 @@ export class PtxToGaiaXConvertor {
     });
 
     if(resource.representation){
-      const location = [];
-      location.push(resource.representation?.url ?? '')
       const distribution = new Distribution({
         'dcat:language': '',
         'dct:format': '',
@@ -253,8 +251,6 @@ export class PtxToGaiaXConvertor {
     dataProduct['dcterms:creator'] = agent;
 
     dataProduct['dcat:qualifiedRelation'] = relations;
-
-    dataProduct['dcterms:creator'] = new foaf.Agent({ account: resource.providedBy ?? '' });
 
     dataProduct['dcat:contactPoint'] = new vcard.Kind();
     dataProduct['dcat:contactPoint'].url = resource.dependsOn;

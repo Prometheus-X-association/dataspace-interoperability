@@ -50,8 +50,8 @@ export class GaiaXToPtxConvertor {
         });
         if (!resource.representation) {
           resource.representation = rep;
-        } else if (!resource.apiResponseRepresentation) {
-          resource.apiResponseRepresentation = rep;
+        } else {
+          resource.apiResponseRepresentation ??= rep;
         }
       }
     }
@@ -98,8 +98,8 @@ export class GaiaXToPtxConvertor {
         });
         if (!softwareResource.representation) {
           softwareResource.representation = rep;
-        } else if (!softwareResource.apiResponseRepresentation) {
-          softwareResource.apiResponseRepresentation = rep;
+        } else {
+          softwareResource.apiResponseRepresentation ??= rep;
         }
       }
     }
@@ -137,10 +137,10 @@ export class GaiaXToPtxConvertor {
     if (Array.isArray(datasets)) {
       for (const dataset of datasets) {
         if(dataset['@type'] === 'DataResource'){
-          const dataResource = this.mapDataSetToDataResource(dataset as IDataSet);
+          const dataResource = this.mapDataSetToDataResource(dataset);
           serviceOffering.dataResources.push(dataResource);
         } else {
-          const softwareResource = this.mapDataSetToSoftwareResource(dataset as IDataSet);
+          const softwareResource = this.mapDataSetToSoftwareResource(dataset);
           serviceOffering.softwareResources.push(softwareResource);
         }
       }
@@ -180,10 +180,10 @@ export class GaiaXToPtxConvertor {
         for (const dataset of catalog['dcat:dataset']) {
           let mapping;
           if (dataset['@type'] === 'DataResource') {
-            mapping = this.mapDataSetToDataResource(dataset as IDataSet)
+            mapping = this.mapDataSetToDataResource(dataset)
             dataResources.push(mapping)
           } else {
-            mapping = this.mapDataSetToSoftwareResource(dataset as IDataSet)
+            mapping = this.mapDataSetToSoftwareResource(dataset)
             softwareResources.push(mapping)
           }
         }

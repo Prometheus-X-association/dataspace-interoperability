@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { SimplToPtxConvertor } from '../convertors/SimplToPtx.convertor';
 import dataOffering from './utils/simpl/dataOffering.json';
-import { IDataOffering } from '../types/simpl/DataOffering';
 
 describe('Simpl Catalog to Prometheus-X Catalog', function () {
   let convertor: SimplToPtxConvertor;
@@ -11,7 +10,7 @@ describe('Simpl Catalog to Prometheus-X Catalog', function () {
   });
 
   it('should map a DataOffering to a DataResource', function () {
-    const mapping = convertor.mapDataOfferingToDataResource(dataOffering as IDataOffering);
+    const mapping = convertor.mapDataOfferingToDataResource(dataOffering);
 
     expect(mapping).to.exist;
     expect(mapping).to.be.an('object');

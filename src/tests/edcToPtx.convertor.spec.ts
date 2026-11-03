@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import { EdcToPtxConvertor } from '../convertors/EdcToPtx.convertor';
 import { mockDataResource, mockParticipant } from './utils/mock';
 import catalog from './utils/edc/catalog.json';
-import {IEdcCatalog} from "../types/edc/EdcCatalog";
 
 describe('EDC Catalog to Prometheus-X Catalog', function () {
   let convertor: EdcToPtxConvertor;
@@ -15,7 +14,7 @@ describe('EDC Catalog to Prometheus-X Catalog', function () {
     mockDataResource();
     mockParticipant();
 
-    const mapping = convertor.mapEdcCatalogToPtxCatalog(catalog[0] as IEdcCatalog);
+    const mapping = convertor.mapEdcCatalogToPtxCatalog(catalog[0]);
 
     // Validate service offerings
     expect(mapping.serviceOfferings).to.be.an('array');

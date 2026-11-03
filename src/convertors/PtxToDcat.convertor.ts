@@ -162,29 +162,15 @@ export class PtxToDcatConvertor {
       relations.push(relation);
 
       if (response.data.representation) {
-        const distribution = new Distribution();
-        distribution['dcat:accessURL'] = response.data.representation.url;
-        distribution['dcat:mediaType'] = response.data.representation.fileType;
-        distribution['dcat:accessService'] =
-                    response.data['@type'] === 'SoftwareResource'
-                      ? this.mapSoftwareResourceToDataService(response.data)
-                      : response.data['@type'] === 'DataResource'
-                        ? this.mapDataResourceToDataService(response.data)
-                        : new DataService();
-        distributions.push(distribution);
+        distributions.push(
+          this.mapRepresentationToDistribution(response.data.representation, response.data),
+        );
       }
 
       if (response.data.apiResponseRepresentation) {
-        const distribution = new Distribution();
-        distribution['dcat:accessURL'] = response.data.apiResponseRepresentation.url;
-        distribution['dcat:mediaType'] = response.data.apiResponseRepresentation.fileType;
-        distribution['dcat:accessService'] =
-                    response.data['@type'] === 'SoftwareResource'
-                      ? this.mapSoftwareResourceToDataService(response.data)
-                      : response.data['@type'] === 'DataResource'
-                        ? this.mapDataResourceToDataService(response.data)
-                        : new DataService();
-        distributions.push(distribution);
+        distributions.push(
+          this.mapRepresentationToDistribution(response.data.apiResponseRepresentation, response.data),
+        );
       }
     }
 
@@ -210,6 +196,37 @@ export class PtxToDcatConvertor {
     dataset['dcterms:conformsTo'] = resource.termsAndConditions;
 
     return dataset;
+  }
+
+  /**
+   * Map a Prometheus-X resource to the DCAT Data Service matching its type
+   * @param resource any - Resource fetched from the catalog
+   * @return DataService | Dataset
+   * @private
+   */
+  private mapResourceToDataService(resource: any): DataService | Dataset {
+    if (resource['@type'] === 'SoftwareResource') {
+      return this.mapSoftwareResourceToDataService(resource);
+    }
+    if (resource['@type'] === 'DataResource') {
+      return this.mapDataResourceToDataService(resource);
+    }
+    return new DataService();
+  }
+
+  /**
+   * Map a Prometheus-X resource representation to a DCAT Distribution
+   * @param representation any - The representation (or API response representation) of the resource
+   * @param resource any - Resource fetched from the catalog
+   * @return Distribution
+   * @private
+   */
+  private mapRepresentationToDistribution(representation: any, resource: any): Distribution {
+    const distribution = new Distribution();
+    distribution['dcat:accessURL'] = representation.url;
+    distribution['dcat:mediaType'] = representation.fileType;
+    distribution['dcat:accessService'] = this.mapResourceToDataService(resource);
+    return distribution;
   }
 
   /**
